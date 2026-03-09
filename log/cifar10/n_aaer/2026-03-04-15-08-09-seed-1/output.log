@@ -1,0 +1,1749 @@
+Method: n_aaer
+Seed: 1
+Scheduler: OneCycleLR
+Label smoothing: 0.4
+Weight average: True, tau: 0.9995
+AAER parameters: lamda1=1.0, lamda2=1.5, lamda3=0.15, clamp=0, fgsm_alpha=1.0, delta_init=random
+
+
+============ Epoch 0 ============
+Training time: 18.91s
+Training loss: 2.2298
+Training accuracy: 0.1819
+Abnormal examples: 1167
+Abnormal CE loss: 0.0160
+Abnormal L2 loss: -3.8241
+Current GPU memory: 0.85 GB
+Validation time: 3.07s
+Model - Validation accuracy: 0.3130
+Model - FGSM accuracy: 0.2260
+Model - PGD accuracy: 0.2260
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.2260, Val acc: 0.3130)
+
+============ Epoch 1 ============
+Training time: 19.67s
+Training loss: 2.0414
+Training accuracy: 0.2334
+Abnormal examples: 289
+Abnormal CE loss: 0.0110
+Abnormal L2 loss: -0.3410
+Current GPU memory: 1.39 GB
+Validation time: 3.08s
+Model - Validation accuracy: 0.3410
+Model - FGSM accuracy: 0.2600
+Model - PGD accuracy: 0.2590
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.2590, Val acc: 0.3410)
+
+============ Epoch 2 ============
+Training time: 20.57s
+Training loss: 1.9683
+Training accuracy: 0.2617
+Abnormal examples: 180
+Abnormal CE loss: 0.0151
+Abnormal L2 loss: -0.3739
+Current GPU memory: 1.39 GB
+Validation time: 3.13s
+Model - Validation accuracy: 0.4140
+Model - FGSM accuracy: 0.2630
+Model - PGD accuracy: 0.2600
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.2600, Val acc: 0.4140)
+
+============ Epoch 3 ============
+Training time: 19.20s
+Training loss: 1.9228
+Training accuracy: 0.2786
+Abnormal examples: 128
+Abnormal CE loss: 0.0174
+Abnormal L2 loss: -0.4517
+Current GPU memory: 1.39 GB
+Validation time: 2.94s
+Model - Validation accuracy: 0.4420
+Model - FGSM accuracy: 0.2730
+Model - PGD accuracy: 0.2700
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.2700, Val acc: 0.4420)
+
+============ Epoch 4 ============
+Training time: 18.58s
+Training loss: 1.8762
+Training accuracy: 0.2969
+Abnormal examples: 145
+Abnormal CE loss: 0.0180
+Abnormal L2 loss: -0.5028
+Current GPU memory: 1.39 GB
+Validation time: 3.10s
+Model - Validation accuracy: 0.4940
+Model - FGSM accuracy: 0.3350
+Model - PGD accuracy: 0.3240
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.3240, Val acc: 0.4940)
+
+============ Epoch 5 ============
+Training time: 19.16s
+Training loss: 1.8346
+Training accuracy: 0.3135
+Abnormal examples: 177
+Abnormal CE loss: 0.0212
+Abnormal L2 loss: -0.4708
+Current GPU memory: 1.39 GB
+Validation time: 3.25s
+Model - Validation accuracy: 0.4870
+Model - FGSM accuracy: 0.3280
+Model - PGD accuracy: 0.3250
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.3250, Val acc: 0.4870)
+
+============ Epoch 6 ============
+Training time: 20.13s
+Training loss: 1.7898
+Training accuracy: 0.3339
+Abnormal examples: 223
+Abnormal CE loss: 0.0155
+Abnormal L2 loss: -0.5434
+Current GPU memory: 1.39 GB
+Validation time: 2.91s
+Model - Validation accuracy: 0.4950
+Model - FGSM accuracy: 0.3490
+Model - PGD accuracy: 0.3420
+WA Model - Validation accuracy: 0.0780
+WA Model - FGSM accuracy: 0.0780
+WA Model - PGD accuracy: 0.0780
+Best model: model (PGD acc: 0.3420, Val acc: 0.4950)
+
+============ Epoch 7 ============
+Training time: 19.31s
+Training loss: 1.7456
+Training accuracy: 0.3487
+Abnormal examples: 307
+Abnormal CE loss: 0.0190
+Abnormal L2 loss: -0.5680
+Current GPU memory: 1.39 GB
+Validation time: 3.13s
+Model - Validation accuracy: 0.5630
+Model - FGSM accuracy: 0.3840
+Model - PGD accuracy: 0.3720
+WA Model - Validation accuracy: 0.0800
+WA Model - FGSM accuracy: 0.0790
+WA Model - PGD accuracy: 0.0790
+Best model: model (PGD acc: 0.3720, Val acc: 0.5630)
+
+============ Epoch 8 ============
+Training time: 20.42s
+Training loss: 1.7022
+Training accuracy: 0.3649
+Abnormal examples: 442
+Abnormal CE loss: 0.0157
+Abnormal L2 loss: -0.4809
+Current GPU memory: 1.39 GB
+Validation time: 2.85s
+Model - Validation accuracy: 0.5590
+Model - FGSM accuracy: 0.3750
+Model - PGD accuracy: 0.3650
+WA Model - Validation accuracy: 0.0960
+WA Model - FGSM accuracy: 0.0850
+WA Model - PGD accuracy: 0.0850
+Best model: model (PGD acc: 0.3650, Val acc: 0.5590)
+
+============ Epoch 9 ============
+Training time: 20.30s
+Training loss: 1.6693
+Training accuracy: 0.3763
+Abnormal examples: 584
+Abnormal CE loss: 0.0158
+Abnormal L2 loss: -0.5172
+Current GPU memory: 1.39 GB
+Validation time: 3.05s
+Model - Validation accuracy: 0.5830
+Model - FGSM accuracy: 0.4060
+Model - PGD accuracy: 0.3860
+WA Model - Validation accuracy: 0.1050
+WA Model - FGSM accuracy: 0.0880
+WA Model - PGD accuracy: 0.0890
+Best model: model (PGD acc: 0.3860, Val acc: 0.5830)
+
+============ Epoch 10 ============
+Training time: 19.23s
+Training loss: 1.6387
+Training accuracy: 0.3908
+Abnormal examples: 740
+Abnormal CE loss: 0.0143
+Abnormal L2 loss: -0.5444
+Current GPU memory: 1.39 GB
+Validation time: 3.01s
+Model - Validation accuracy: 0.6110
+Model - FGSM accuracy: 0.4070
+Model - PGD accuracy: 0.3890
+WA Model - Validation accuracy: 0.1260
+WA Model - FGSM accuracy: 0.1050
+WA Model - PGD accuracy: 0.1040
+Best model: model (PGD acc: 0.3890, Val acc: 0.6110)
+
+============ Epoch 11 ============
+Training time: 19.06s
+Training loss: 1.6060
+Training accuracy: 0.4033
+Abnormal examples: 1039
+Abnormal CE loss: 0.0144
+Abnormal L2 loss: -0.5934
+Current GPU memory: 1.39 GB
+Validation time: 2.81s
+Model - Validation accuracy: 0.6180
+Model - FGSM accuracy: 0.3810
+Model - PGD accuracy: 0.3600
+WA Model - Validation accuracy: 0.1450
+WA Model - FGSM accuracy: 0.1050
+WA Model - PGD accuracy: 0.1050
+Best model: model (PGD acc: 0.3600, Val acc: 0.6180)
+
+============ Epoch 12 ============
+Training time: 19.62s
+Training loss: 1.5820
+Training accuracy: 0.4170
+Abnormal examples: 1277
+Abnormal CE loss: 0.0148
+Abnormal L2 loss: -0.6220
+Current GPU memory: 1.39 GB
+Validation time: 2.75s
+Model - Validation accuracy: 0.6440
+Model - FGSM accuracy: 0.4010
+Model - PGD accuracy: 0.3800
+WA Model - Validation accuracy: 0.1750
+WA Model - FGSM accuracy: 0.1190
+WA Model - PGD accuracy: 0.1180
+Best model: model (PGD acc: 0.3800, Val acc: 0.6440)
+
+============ Epoch 13 ============
+Training time: 19.58s
+Training loss: 1.5578
+Training accuracy: 0.4264
+Abnormal examples: 1640
+Abnormal CE loss: 0.0139
+Abnormal L2 loss: -0.6097
+Current GPU memory: 1.39 GB
+Validation time: 2.62s
+Model - Validation accuracy: 0.6450
+Model - FGSM accuracy: 0.4340
+Model - PGD accuracy: 0.4110
+WA Model - Validation accuracy: 0.2030
+WA Model - FGSM accuracy: 0.1300
+WA Model - PGD accuracy: 0.1300
+Best model: model (PGD acc: 0.4110, Val acc: 0.6450)
+
+============ Epoch 14 ============
+Training time: 19.27s
+Training loss: 1.5331
+Training accuracy: 0.4369
+Abnormal examples: 1912
+Abnormal CE loss: 0.0142
+Abnormal L2 loss: -0.5960
+Current GPU memory: 1.39 GB
+Validation time: 2.79s
+Model - Validation accuracy: 0.6600
+Model - FGSM accuracy: 0.4350
+Model - PGD accuracy: 0.4120
+WA Model - Validation accuracy: 0.2380
+WA Model - FGSM accuracy: 0.1590
+WA Model - PGD accuracy: 0.1560
+Best model: model (PGD acc: 0.4120, Val acc: 0.6600)
+
+============ Epoch 15 ============
+Training time: 19.74s
+Training loss: 1.5150
+Training accuracy: 0.4465
+Abnormal examples: 2256
+Abnormal CE loss: 0.0151
+Abnormal L2 loss: -0.5863
+Current GPU memory: 1.39 GB
+Validation time: 2.70s
+Model - Validation accuracy: 0.6290
+Model - FGSM accuracy: 0.4220
+Model - PGD accuracy: 0.4050
+WA Model - Validation accuracy: 0.2750
+WA Model - FGSM accuracy: 0.1720
+WA Model - PGD accuracy: 0.1720
+Best model: model (PGD acc: 0.4050, Val acc: 0.6290)
+
+============ Epoch 16 ============
+Training time: 19.29s
+Training loss: 1.4964
+Training accuracy: 0.4548
+Abnormal examples: 2637
+Abnormal CE loss: 0.0162
+Abnormal L2 loss: -0.5807
+Current GPU memory: 1.39 GB
+Validation time: 3.08s
+Model - Validation accuracy: 0.6980
+Model - FGSM accuracy: 0.4270
+Model - PGD accuracy: 0.4040
+WA Model - Validation accuracy: 0.3040
+WA Model - FGSM accuracy: 0.1860
+WA Model - PGD accuracy: 0.1850
+Best model: model (PGD acc: 0.4040, Val acc: 0.6980)
+
+============ Epoch 17 ============
+Training time: 19.08s
+Training loss: 1.4775
+Training accuracy: 0.4654
+Abnormal examples: 3044
+Abnormal CE loss: 0.0168
+Abnormal L2 loss: -0.5484
+Current GPU memory: 1.39 GB
+Validation time: 2.64s
+Model - Validation accuracy: 0.6890
+Model - FGSM accuracy: 0.4460
+Model - PGD accuracy: 0.4170
+WA Model - Validation accuracy: 0.3060
+WA Model - FGSM accuracy: 0.1930
+WA Model - PGD accuracy: 0.1930
+Best model: model (PGD acc: 0.4170, Val acc: 0.6890)
+
+============ Epoch 18 ============
+Training time: 19.54s
+Training loss: 1.4648
+Training accuracy: 0.4698
+Abnormal examples: 3407
+Abnormal CE loss: 0.0181
+Abnormal L2 loss: -0.5296
+Current GPU memory: 1.39 GB
+Validation time: 3.37s
+Model - Validation accuracy: 0.7080
+Model - FGSM accuracy: 0.4620
+Model - PGD accuracy: 0.4300
+WA Model - Validation accuracy: 0.2990
+WA Model - FGSM accuracy: 0.1900
+WA Model - PGD accuracy: 0.1870
+Best model: model (PGD acc: 0.4300, Val acc: 0.7080)
+
+============ Epoch 19 ============
+Training time: 18.92s
+Training loss: 1.4460
+Training accuracy: 0.4807
+Abnormal examples: 3712
+Abnormal CE loss: 0.0187
+Abnormal L2 loss: -0.5708
+Current GPU memory: 1.39 GB
+Validation time: 3.24s
+Model - Validation accuracy: 0.6810
+Model - FGSM accuracy: 0.4570
+Model - PGD accuracy: 0.4220
+WA Model - Validation accuracy: 0.2730
+WA Model - FGSM accuracy: 0.1760
+WA Model - PGD accuracy: 0.1740
+Best model: model (PGD acc: 0.4220, Val acc: 0.6810)
+
+============ Epoch 20 ============
+Training time: 19.27s
+Training loss: 1.4335
+Training accuracy: 0.4887
+Abnormal examples: 3974
+Abnormal CE loss: 0.0189
+Abnormal L2 loss: -0.5462
+Current GPU memory: 1.39 GB
+Validation time: 2.95s
+Model - Validation accuracy: 0.7020
+Model - FGSM accuracy: 0.4680
+Model - PGD accuracy: 0.4380
+WA Model - Validation accuracy: 0.2320
+WA Model - FGSM accuracy: 0.1580
+WA Model - PGD accuracy: 0.1560
+Best model: model (PGD acc: 0.4380, Val acc: 0.7020)
+
+============ Epoch 21 ============
+Training time: 18.20s
+Training loss: 1.4206
+Training accuracy: 0.4960
+Abnormal examples: 4276
+Abnormal CE loss: 0.0190
+Abnormal L2 loss: -0.5905
+Current GPU memory: 1.39 GB
+Validation time: 3.29s
+Model - Validation accuracy: 0.6950
+Model - FGSM accuracy: 0.4630
+Model - PGD accuracy: 0.4350
+WA Model - Validation accuracy: 0.1830
+WA Model - FGSM accuracy: 0.1300
+WA Model - PGD accuracy: 0.1290
+Best model: model (PGD acc: 0.4350, Val acc: 0.6950)
+
+============ Epoch 22 ============
+Training time: 17.67s
+Training loss: 1.4123
+Training accuracy: 0.5014
+Abnormal examples: 4375
+Abnormal CE loss: 0.0196
+Abnormal L2 loss: -0.5846
+Current GPU memory: 1.39 GB
+Validation time: 2.87s
+Model - Validation accuracy: 0.7340
+Model - FGSM accuracy: 0.4820
+Model - PGD accuracy: 0.4420
+WA Model - Validation accuracy: 0.1450
+WA Model - FGSM accuracy: 0.1150
+WA Model - PGD accuracy: 0.1150
+Best model: model (PGD acc: 0.4420, Val acc: 0.7340)
+
+============ Epoch 23 ============
+Training time: 19.75s
+Training loss: 1.4013
+Training accuracy: 0.5035
+Abnormal examples: 4569
+Abnormal CE loss: 0.0200
+Abnormal L2 loss: -0.6069
+Current GPU memory: 1.39 GB
+Validation time: 3.27s
+Model - Validation accuracy: 0.7320
+Model - FGSM accuracy: 0.4830
+Model - PGD accuracy: 0.4500
+WA Model - Validation accuracy: 0.1190
+WA Model - FGSM accuracy: 0.1100
+WA Model - PGD accuracy: 0.1100
+Best model: model (PGD acc: 0.4500, Val acc: 0.7320)
+
+============ Epoch 24 ============
+Training time: 18.09s
+Training loss: 1.3967
+Training accuracy: 0.5086
+Abnormal examples: 4800
+Abnormal CE loss: 0.0199
+Abnormal L2 loss: -0.6163
+Current GPU memory: 1.39 GB
+Validation time: 3.20s
+Model - Validation accuracy: 0.7370
+Model - FGSM accuracy: 0.4840
+Model - PGD accuracy: 0.4360
+WA Model - Validation accuracy: 0.1120
+WA Model - FGSM accuracy: 0.1070
+WA Model - PGD accuracy: 0.1070
+Best model: model (PGD acc: 0.4360, Val acc: 0.7370)
+
+============ Epoch 25 ============
+Training time: 20.06s
+Training loss: 1.3870
+Training accuracy: 0.5150
+Abnormal examples: 4791
+Abnormal CE loss: 0.0202
+Abnormal L2 loss: -0.6136
+Current GPU memory: 1.39 GB
+Validation time: 3.40s
+Model - Validation accuracy: 0.7130
+Model - FGSM accuracy: 0.4730
+Model - PGD accuracy: 0.4360
+WA Model - Validation accuracy: 0.1080
+WA Model - FGSM accuracy: 0.1070
+WA Model - PGD accuracy: 0.1070
+Best model: model (PGD acc: 0.4360, Val acc: 0.7130)
+
+============ Epoch 26 ============
+Training time: 18.88s
+Training loss: 1.3836
+Training accuracy: 0.5193
+Abnormal examples: 5034
+Abnormal CE loss: 0.0198
+Abnormal L2 loss: -0.6030
+Current GPU memory: 1.39 GB
+Validation time: 3.22s
+Model - Validation accuracy: 0.7380
+Model - FGSM accuracy: 0.4470
+Model - PGD accuracy: 0.4040
+WA Model - Validation accuracy: 0.1050
+WA Model - FGSM accuracy: 0.1030
+WA Model - PGD accuracy: 0.1030
+Best model: model (PGD acc: 0.4040, Val acc: 0.7380)
+
+============ Epoch 27 ============
+Training time: 18.54s
+Training loss: 1.3748
+Training accuracy: 0.5211
+Abnormal examples: 5227
+Abnormal CE loss: 0.0201
+Abnormal L2 loss: -0.6207
+Current GPU memory: 1.39 GB
+Validation time: 2.95s
+Model - Validation accuracy: 0.7160
+Model - FGSM accuracy: 0.4580
+Model - PGD accuracy: 0.4310
+WA Model - Validation accuracy: 0.1050
+WA Model - FGSM accuracy: 0.1030
+WA Model - PGD accuracy: 0.1020
+Best model: model (PGD acc: 0.4310, Val acc: 0.7160)
+
+============ Epoch 28 ============
+Training time: 19.16s
+Training loss: 1.3702
+Training accuracy: 0.5285
+Abnormal examples: 5125
+Abnormal CE loss: 0.0202
+Abnormal L2 loss: -0.6259
+Current GPU memory: 1.39 GB
+Validation time: 3.01s
+Model - Validation accuracy: 0.6970
+Model - FGSM accuracy: 0.4520
+Model - PGD accuracy: 0.4350
+WA Model - Validation accuracy: 0.1050
+WA Model - FGSM accuracy: 0.1030
+WA Model - PGD accuracy: 0.1030
+Best model: model (PGD acc: 0.4350, Val acc: 0.6970)
+
+============ Epoch 29 ============
+Training time: 17.73s
+Training loss: 1.3572
+Training accuracy: 0.5310
+Abnormal examples: 5438
+Abnormal CE loss: 0.0194
+Abnormal L2 loss: -0.6674
+Current GPU memory: 1.39 GB
+Validation time: 3.14s
+Model - Validation accuracy: 0.7120
+Model - FGSM accuracy: 0.4620
+Model - PGD accuracy: 0.4270
+WA Model - Validation accuracy: 0.1060
+WA Model - FGSM accuracy: 0.1040
+WA Model - PGD accuracy: 0.1040
+Best model: model (PGD acc: 0.4270, Val acc: 0.7120)
+
+============ Epoch 30 ============
+Training time: 18.19s
+Training loss: 1.3551
+Training accuracy: 0.5322
+Abnormal examples: 5284
+Abnormal CE loss: 0.0186
+Abnormal L2 loss: -0.6576
+Current GPU memory: 1.39 GB
+Validation time: 3.28s
+Model - Validation accuracy: 0.7210
+Model - FGSM accuracy: 0.4710
+Model - PGD accuracy: 0.4460
+WA Model - Validation accuracy: 0.1090
+WA Model - FGSM accuracy: 0.1070
+WA Model - PGD accuracy: 0.1070
+Best model: model (PGD acc: 0.4460, Val acc: 0.7210)
+
+============ Epoch 31 ============
+Training time: 18.11s
+Training loss: 1.3474
+Training accuracy: 0.5351
+Abnormal examples: 5615
+Abnormal CE loss: 0.0194
+Abnormal L2 loss: -0.6763
+Current GPU memory: 1.39 GB
+Validation time: 3.18s
+Model - Validation accuracy: 0.7350
+Model - FGSM accuracy: 0.4830
+Model - PGD accuracy: 0.4580
+WA Model - Validation accuracy: 0.1160
+WA Model - FGSM accuracy: 0.1080
+WA Model - PGD accuracy: 0.1080
+Best model: model (PGD acc: 0.4580, Val acc: 0.7350)
+
+============ Epoch 32 ============
+Training time: 18.84s
+Training loss: 1.3404
+Training accuracy: 0.5383
+Abnormal examples: 5577
+Abnormal CE loss: 0.0189
+Abnormal L2 loss: -0.6143
+Current GPU memory: 1.39 GB
+Validation time: 2.98s
+Model - Validation accuracy: 0.7310
+Model - FGSM accuracy: 0.4680
+Model - PGD accuracy: 0.4320
+WA Model - Validation accuracy: 0.1280
+WA Model - FGSM accuracy: 0.1150
+WA Model - PGD accuracy: 0.1150
+Best model: model (PGD acc: 0.4320, Val acc: 0.7310)
+
+============ Epoch 33 ============
+Training time: 19.30s
+Training loss: 1.3379
+Training accuracy: 0.5425
+Abnormal examples: 5615
+Abnormal CE loss: 0.0190
+Abnormal L2 loss: -0.7078
+Current GPU memory: 1.39 GB
+Validation time: 2.79s
+Model - Validation accuracy: 0.6670
+Model - FGSM accuracy: 0.4410
+Model - PGD accuracy: 0.3980
+WA Model - Validation accuracy: 0.1500
+WA Model - FGSM accuracy: 0.1250
+WA Model - PGD accuracy: 0.1240
+Best model: model (PGD acc: 0.3980, Val acc: 0.6670)
+
+============ Epoch 34 ============
+Training time: 19.30s
+Training loss: 1.3296
+Training accuracy: 0.5419
+Abnormal examples: 5869
+Abnormal CE loss: 0.0183
+Abnormal L2 loss: -0.6598
+Current GPU memory: 1.39 GB
+Validation time: 2.76s
+Model - Validation accuracy: 0.6980
+Model - FGSM accuracy: 0.4790
+Model - PGD accuracy: 0.4520
+WA Model - Validation accuracy: 0.1930
+WA Model - FGSM accuracy: 0.1400
+WA Model - PGD accuracy: 0.1370
+Best model: model (PGD acc: 0.4520, Val acc: 0.6980)
+
+============ Epoch 35 ============
+Training time: 20.28s
+Training loss: 1.3211
+Training accuracy: 0.5449
+Abnormal examples: 5958
+Abnormal CE loss: 0.0178
+Abnormal L2 loss: -0.6894
+Current GPU memory: 1.39 GB
+Validation time: 3.21s
+Model - Validation accuracy: 0.7280
+Model - FGSM accuracy: 0.4660
+Model - PGD accuracy: 0.4300
+WA Model - Validation accuracy: 0.2530
+WA Model - FGSM accuracy: 0.1740
+WA Model - PGD accuracy: 0.1720
+Best model: model (PGD acc: 0.4300, Val acc: 0.7280)
+
+============ Epoch 36 ============
+Training time: 19.65s
+Training loss: 1.3178
+Training accuracy: 0.5474
+Abnormal examples: 5918
+Abnormal CE loss: 0.0181
+Abnormal L2 loss: -0.6823
+Current GPU memory: 1.39 GB
+Validation time: 2.97s
+Model - Validation accuracy: 0.7250
+Model - FGSM accuracy: 0.4810
+Model - PGD accuracy: 0.4490
+WA Model - Validation accuracy: 0.3220
+WA Model - FGSM accuracy: 0.2240
+WA Model - PGD accuracy: 0.2230
+Best model: model (PGD acc: 0.4490, Val acc: 0.7250)
+
+============ Epoch 37 ============
+Training time: 19.97s
+Training loss: 1.3121
+Training accuracy: 0.5507
+Abnormal examples: 6064
+Abnormal CE loss: 0.0182
+Abnormal L2 loss: -0.7060
+Current GPU memory: 1.39 GB
+Validation time: 2.81s
+Model - Validation accuracy: 0.6980
+Model - FGSM accuracy: 0.4690
+Model - PGD accuracy: 0.4430
+WA Model - Validation accuracy: 0.4130
+WA Model - FGSM accuracy: 0.2740
+WA Model - PGD accuracy: 0.2710
+Best model: model (PGD acc: 0.4430, Val acc: 0.6980)
+
+============ Epoch 38 ============
+Training time: 18.96s
+Training loss: 1.3089
+Training accuracy: 0.5534
+Abnormal examples: 6054
+Abnormal CE loss: 0.0183
+Abnormal L2 loss: -0.7275
+Current GPU memory: 1.39 GB
+Validation time: 3.20s
+Model - Validation accuracy: 0.7330
+Model - FGSM accuracy: 0.4990
+Model - PGD accuracy: 0.4630
+WA Model - Validation accuracy: 0.4830
+WA Model - FGSM accuracy: 0.3310
+WA Model - PGD accuracy: 0.3250
+Best model: model (PGD acc: 0.4630, Val acc: 0.7330)
+
+============ Epoch 39 ============
+Training time: 18.82s
+Training loss: 1.2970
+Training accuracy: 0.5549
+Abnormal examples: 6266
+Abnormal CE loss: 0.0175
+Abnormal L2 loss: -0.7394
+Current GPU memory: 1.39 GB
+Validation time: 3.03s
+Model - Validation accuracy: 0.7310
+Model - FGSM accuracy: 0.4600
+Model - PGD accuracy: 0.4290
+WA Model - Validation accuracy: 0.5370
+WA Model - FGSM accuracy: 0.3800
+WA Model - PGD accuracy: 0.3740
+Best model: model (PGD acc: 0.4290, Val acc: 0.7310)
+
+============ Epoch 40 ============
+Training time: 19.42s
+Training loss: 1.3015
+Training accuracy: 0.5540
+Abnormal examples: 6270
+Abnormal CE loss: 0.0179
+Abnormal L2 loss: -0.7501
+Current GPU memory: 1.39 GB
+Validation time: 2.75s
+Model - Validation accuracy: 0.7310
+Model - FGSM accuracy: 0.4790
+Model - PGD accuracy: 0.4480
+WA Model - Validation accuracy: 0.5840
+WA Model - FGSM accuracy: 0.4280
+WA Model - PGD accuracy: 0.4180
+Best model: model (PGD acc: 0.4480, Val acc: 0.7310)
+
+============ Epoch 41 ============
+Training time: 19.28s
+Training loss: 1.2890
+Training accuracy: 0.5551
+Abnormal examples: 6575
+Abnormal CE loss: 0.0173
+Abnormal L2 loss: -0.6951
+Current GPU memory: 1.39 GB
+Validation time: 3.04s
+Model - Validation accuracy: 0.7390
+Model - FGSM accuracy: 0.4830
+Model - PGD accuracy: 0.4500
+WA Model - Validation accuracy: 0.6300
+WA Model - FGSM accuracy: 0.4540
+WA Model - PGD accuracy: 0.4470
+Best model: model (PGD acc: 0.4500, Val acc: 0.7390)
+
+============ Epoch 42 ============
+Training time: 19.17s
+Training loss: 1.2900
+Training accuracy: 0.5557
+Abnormal examples: 6388
+Abnormal CE loss: 0.0176
+Abnormal L2 loss: -0.7614
+Current GPU memory: 1.39 GB
+Validation time: 2.79s
+Model - Validation accuracy: 0.7520
+Model - FGSM accuracy: 0.4940
+Model - PGD accuracy: 0.4580
+WA Model - Validation accuracy: 0.6530
+WA Model - FGSM accuracy: 0.4760
+WA Model - PGD accuracy: 0.4670
+Best model: wa_model (PGD acc: 0.4670, Val acc: 0.6530)
+
+============ Epoch 43 ============
+Training time: 20.07s
+Training loss: 1.2846
+Training accuracy: 0.5581
+Abnormal examples: 6474
+Abnormal CE loss: 0.0174
+Abnormal L2 loss: -0.7799
+Current GPU memory: 1.39 GB
+Validation time: 3.15s
+Model - Validation accuracy: 0.7450
+Model - FGSM accuracy: 0.4940
+Model - PGD accuracy: 0.4600
+WA Model - Validation accuracy: 0.6660
+WA Model - FGSM accuracy: 0.4980
+WA Model - PGD accuracy: 0.4880
+Best model: wa_model (PGD acc: 0.4880, Val acc: 0.6660)
+
+============ Epoch 44 ============
+Training time: 19.65s
+Training loss: 1.2767
+Training accuracy: 0.5613
+Abnormal examples: 6555
+Abnormal CE loss: 0.0173
+Abnormal L2 loss: -0.7931
+Current GPU memory: 1.39 GB
+Validation time: 2.55s
+Model - Validation accuracy: 0.7320
+Model - FGSM accuracy: 0.4770
+Model - PGD accuracy: 0.4410
+WA Model - Validation accuracy: 0.6840
+WA Model - FGSM accuracy: 0.5110
+WA Model - PGD accuracy: 0.5040
+Best model: wa_model (PGD acc: 0.5040, Val acc: 0.6840)
+
+============ Epoch 45 ============
+Training time: 19.86s
+Training loss: 1.2756
+Training accuracy: 0.5606
+Abnormal examples: 6563
+Abnormal CE loss: 0.0173
+Abnormal L2 loss: -0.7726
+Current GPU memory: 1.39 GB
+Validation time: 2.79s
+Model - Validation accuracy: 0.7350
+Model - FGSM accuracy: 0.4920
+Model - PGD accuracy: 0.4620
+WA Model - Validation accuracy: 0.7060
+WA Model - FGSM accuracy: 0.5220
+WA Model - PGD accuracy: 0.5130
+Best model: wa_model (PGD acc: 0.5130, Val acc: 0.7060)
+
+============ Epoch 46 ============
+Training time: 19.07s
+Training loss: 1.2738
+Training accuracy: 0.5621
+Abnormal examples: 6677
+Abnormal CE loss: 0.0171
+Abnormal L2 loss: -0.7829
+Current GPU memory: 1.39 GB
+Validation time: 3.14s
+Model - Validation accuracy: 0.7330
+Model - FGSM accuracy: 0.4740
+Model - PGD accuracy: 0.4390
+WA Model - Validation accuracy: 0.7140
+WA Model - FGSM accuracy: 0.5340
+WA Model - PGD accuracy: 0.5250
+Best model: wa_model (PGD acc: 0.5250, Val acc: 0.7140)
+
+============ Epoch 47 ============
+Training time: 18.51s
+Training loss: 1.2660
+Training accuracy: 0.5624
+Abnormal examples: 6850
+Abnormal CE loss: 0.0165
+Abnormal L2 loss: -0.7691
+Current GPU memory: 1.39 GB
+Validation time: 3.16s
+Model - Validation accuracy: 0.7400
+Model - FGSM accuracy: 0.5120
+Model - PGD accuracy: 0.4730
+WA Model - Validation accuracy: 0.7180
+WA Model - FGSM accuracy: 0.5430
+WA Model - PGD accuracy: 0.5300
+Best model: wa_model (PGD acc: 0.5300, Val acc: 0.7180)
+
+============ Epoch 48 ============
+Training time: 19.41s
+Training loss: 1.2610
+Training accuracy: 0.5641
+Abnormal examples: 6770
+Abnormal CE loss: 0.0169
+Abnormal L2 loss: -0.7732
+Current GPU memory: 1.39 GB
+Validation time: 2.92s
+Model - Validation accuracy: 0.7250
+Model - FGSM accuracy: 0.4880
+Model - PGD accuracy: 0.4580
+WA Model - Validation accuracy: 0.7290
+WA Model - FGSM accuracy: 0.5480
+WA Model - PGD accuracy: 0.5340
+Best model: wa_model (PGD acc: 0.5340, Val acc: 0.7290)
+
+============ Epoch 49 ============
+Training time: 19.29s
+Training loss: 1.2568
+Training accuracy: 0.5628
+Abnormal examples: 6779
+Abnormal CE loss: 0.0165
+Abnormal L2 loss: -0.7700
+Current GPU memory: 1.39 GB
+Validation time: 3.14s
+Model - Validation accuracy: 0.7540
+Model - FGSM accuracy: 0.4920
+Model - PGD accuracy: 0.4540
+WA Model - Validation accuracy: 0.7390
+WA Model - FGSM accuracy: 0.5450
+WA Model - PGD accuracy: 0.5330
+Best model: wa_model (PGD acc: 0.5330, Val acc: 0.7390)
+
+============ Epoch 50 ============
+Training time: 19.89s
+Training loss: 1.2559
+Training accuracy: 0.5639
+Abnormal examples: 6787
+Abnormal CE loss: 0.0163
+Abnormal L2 loss: -0.8328
+Current GPU memory: 1.39 GB
+Validation time: 3.10s
+Model - Validation accuracy: 0.7480
+Model - FGSM accuracy: 0.4880
+Model - PGD accuracy: 0.4500
+WA Model - Validation accuracy: 0.7380
+WA Model - FGSM accuracy: 0.5510
+WA Model - PGD accuracy: 0.5310
+Best model: wa_model (PGD acc: 0.5310, Val acc: 0.7380)
+
+============ Epoch 51 ============
+Training time: 19.70s
+Training loss: 1.2412
+Training accuracy: 0.5680
+Abnormal examples: 7171
+Abnormal CE loss: 0.0153
+Abnormal L2 loss: -0.7958
+Current GPU memory: 1.39 GB
+Validation time: 3.20s
+Model - Validation accuracy: 0.7250
+Model - FGSM accuracy: 0.5110
+Model - PGD accuracy: 0.4720
+WA Model - Validation accuracy: 0.7450
+WA Model - FGSM accuracy: 0.5490
+WA Model - PGD accuracy: 0.5350
+Best model: wa_model (PGD acc: 0.5350, Val acc: 0.7450)
+
+============ Epoch 52 ============
+Training time: 20.10s
+Training loss: 1.2419
+Training accuracy: 0.5678
+Abnormal examples: 7077
+Abnormal CE loss: 0.0162
+Abnormal L2 loss: -0.7872
+Current GPU memory: 1.39 GB
+Validation time: 2.85s
+Model - Validation accuracy: 0.7410
+Model - FGSM accuracy: 0.4820
+Model - PGD accuracy: 0.4460
+WA Model - Validation accuracy: 0.7520
+WA Model - FGSM accuracy: 0.5540
+WA Model - PGD accuracy: 0.5370
+Best model: wa_model (PGD acc: 0.5370, Val acc: 0.7520)
+
+============ Epoch 53 ============
+Training time: 20.29s
+Training loss: 1.2375
+Training accuracy: 0.5668
+Abnormal examples: 7008
+Abnormal CE loss: 0.0160
+Abnormal L2 loss: -0.8672
+Current GPU memory: 1.39 GB
+Validation time: 3.26s
+Model - Validation accuracy: 0.7610
+Model - FGSM accuracy: 0.4890
+Model - PGD accuracy: 0.4400
+WA Model - Validation accuracy: 0.7520
+WA Model - FGSM accuracy: 0.5580
+WA Model - PGD accuracy: 0.5380
+Best model: wa_model (PGD acc: 0.5380, Val acc: 0.7520)
+
+============ Epoch 54 ============
+Training time: 19.97s
+Training loss: 1.2348
+Training accuracy: 0.5692
+Abnormal examples: 7014
+Abnormal CE loss: 0.0156
+Abnormal L2 loss: -0.8544
+Current GPU memory: 1.39 GB
+Validation time: 2.82s
+Model - Validation accuracy: 0.7490
+Model - FGSM accuracy: 0.4640
+Model - PGD accuracy: 0.4240
+WA Model - Validation accuracy: 0.7540
+WA Model - FGSM accuracy: 0.5640
+WA Model - PGD accuracy: 0.5380
+Best model: wa_model (PGD acc: 0.5380, Val acc: 0.7540)
+
+============ Epoch 55 ============
+Training time: 19.85s
+Training loss: 1.2248
+Training accuracy: 0.5700
+Abnormal examples: 7244
+Abnormal CE loss: 0.0152
+Abnormal L2 loss: -0.8410
+Current GPU memory: 1.39 GB
+Validation time: 3.04s
+Model - Validation accuracy: 0.7600
+Model - FGSM accuracy: 0.5030
+Model - PGD accuracy: 0.4610
+WA Model - Validation accuracy: 0.7580
+WA Model - FGSM accuracy: 0.5640
+WA Model - PGD accuracy: 0.5390
+Best model: wa_model (PGD acc: 0.5390, Val acc: 0.7580)
+
+============ Epoch 56 ============
+Training time: 19.42s
+Training loss: 1.2231
+Training accuracy: 0.5731
+Abnormal examples: 7328
+Abnormal CE loss: 0.0154
+Abnormal L2 loss: -0.8834
+Current GPU memory: 1.39 GB
+Validation time: 2.79s
+Model - Validation accuracy: 0.7430
+Model - FGSM accuracy: 0.4950
+Model - PGD accuracy: 0.4540
+WA Model - Validation accuracy: 0.7590
+WA Model - FGSM accuracy: 0.5610
+WA Model - PGD accuracy: 0.5390
+Best model: wa_model (PGD acc: 0.5390, Val acc: 0.7590)
+
+============ Epoch 57 ============
+Training time: 20.15s
+Training loss: 1.2153
+Training accuracy: 0.5736
+Abnormal examples: 7400
+Abnormal CE loss: 0.0149
+Abnormal L2 loss: -0.8490
+Current GPU memory: 1.39 GB
+Validation time: 2.64s
+Model - Validation accuracy: 0.7460
+Model - FGSM accuracy: 0.4850
+Model - PGD accuracy: 0.4430
+WA Model - Validation accuracy: 0.7640
+WA Model - FGSM accuracy: 0.5610
+WA Model - PGD accuracy: 0.5420
+Best model: wa_model (PGD acc: 0.5420, Val acc: 0.7640)
+
+============ Epoch 58 ============
+Training time: 19.64s
+Training loss: 1.2109
+Training accuracy: 0.5737
+Abnormal examples: 7385
+Abnormal CE loss: 0.0152
+Abnormal L2 loss: -0.8893
+Current GPU memory: 1.39 GB
+Validation time: 3.07s
+Model - Validation accuracy: 0.7690
+Model - FGSM accuracy: 0.5080
+Model - PGD accuracy: 0.4600
+WA Model - Validation accuracy: 0.7650
+WA Model - FGSM accuracy: 0.5610
+WA Model - PGD accuracy: 0.5420
+Best model: wa_model (PGD acc: 0.5420, Val acc: 0.7650)
+
+============ Epoch 59 ============
+Training time: 19.02s
+Training loss: 1.2039
+Training accuracy: 0.5748
+Abnormal examples: 7620
+Abnormal CE loss: 0.0143
+Abnormal L2 loss: -0.8913
+Current GPU memory: 1.39 GB
+Validation time: 3.40s
+Model - Validation accuracy: 0.7710
+Model - FGSM accuracy: 0.5130
+Model - PGD accuracy: 0.4710
+WA Model - Validation accuracy: 0.7670
+WA Model - FGSM accuracy: 0.5650
+WA Model - PGD accuracy: 0.5440
+Best model: wa_model (PGD acc: 0.5440, Val acc: 0.7670)
+
+============ Epoch 60 ============
+Training time: 19.24s
+Training loss: 1.1991
+Training accuracy: 0.5739
+Abnormal examples: 7631
+Abnormal CE loss: 0.0143
+Abnormal L2 loss: -0.9097
+Current GPU memory: 1.39 GB
+Validation time: 2.75s
+Model - Validation accuracy: 0.7750
+Model - FGSM accuracy: 0.5100
+Model - PGD accuracy: 0.4830
+WA Model - Validation accuracy: 0.7700
+WA Model - FGSM accuracy: 0.5650
+WA Model - PGD accuracy: 0.5440
+Best model: wa_model (PGD acc: 0.5440, Val acc: 0.7700)
+
+============ Epoch 61 ============
+Training time: 18.95s
+Training loss: 1.1910
+Training accuracy: 0.5758
+Abnormal examples: 7665
+Abnormal CE loss: 0.0140
+Abnormal L2 loss: -0.8981
+Current GPU memory: 1.39 GB
+Validation time: 2.71s
+Model - Validation accuracy: 0.7610
+Model - FGSM accuracy: 0.5190
+Model - PGD accuracy: 0.4600
+WA Model - Validation accuracy: 0.7690
+WA Model - FGSM accuracy: 0.5670
+WA Model - PGD accuracy: 0.5500
+Best model: wa_model (PGD acc: 0.5500, Val acc: 0.7690)
+
+============ Epoch 62 ============
+Training time: 18.55s
+Training loss: 1.1839
+Training accuracy: 0.5803
+Abnormal examples: 7884
+Abnormal CE loss: 0.0139
+Abnormal L2 loss: -0.9167
+Current GPU memory: 1.39 GB
+Validation time: 2.66s
+Model - Validation accuracy: 0.7690
+Model - FGSM accuracy: 0.5070
+Model - PGD accuracy: 0.4680
+WA Model - Validation accuracy: 0.7690
+WA Model - FGSM accuracy: 0.5650
+WA Model - PGD accuracy: 0.5390
+Best model: wa_model (PGD acc: 0.5390, Val acc: 0.7690)
+
+============ Epoch 63 ============
+Training time: 19.72s
+Training loss: 1.1746
+Training accuracy: 0.5836
+Abnormal examples: 7876
+Abnormal CE loss: 0.0134
+Abnormal L2 loss: -0.9696
+Current GPU memory: 1.39 GB
+Validation time: 2.87s
+Model - Validation accuracy: 0.7620
+Model - FGSM accuracy: 0.5170
+Model - PGD accuracy: 0.4690
+WA Model - Validation accuracy: 0.7740
+WA Model - FGSM accuracy: 0.5660
+WA Model - PGD accuracy: 0.5380
+Best model: wa_model (PGD acc: 0.5380, Val acc: 0.7740)
+
+============ Epoch 64 ============
+Training time: 20.06s
+Training loss: 1.1679
+Training accuracy: 0.5837
+Abnormal examples: 7982
+Abnormal CE loss: 0.0128
+Abnormal L2 loss: -0.8844
+Current GPU memory: 1.39 GB
+Validation time: 2.74s
+Model - Validation accuracy: 0.7460
+Model - FGSM accuracy: 0.4900
+Model - PGD accuracy: 0.4580
+WA Model - Validation accuracy: 0.7750
+WA Model - FGSM accuracy: 0.5610
+WA Model - PGD accuracy: 0.5410
+Best model: wa_model (PGD acc: 0.5410, Val acc: 0.7750)
+
+============ Epoch 65 ============
+Training time: 19.75s
+Training loss: 1.1607
+Training accuracy: 0.5820
+Abnormal examples: 8109
+Abnormal CE loss: 0.0131
+Abnormal L2 loss: -0.9850
+Current GPU memory: 1.39 GB
+Validation time: 2.75s
+Model - Validation accuracy: 0.7810
+Model - FGSM accuracy: 0.5060
+Model - PGD accuracy: 0.4570
+WA Model - Validation accuracy: 0.7800
+WA Model - FGSM accuracy: 0.5660
+WA Model - PGD accuracy: 0.5450
+Best model: wa_model (PGD acc: 0.5450, Val acc: 0.7800)
+
+============ Epoch 66 ============
+Training time: 19.49s
+Training loss: 1.1540
+Training accuracy: 0.5819
+Abnormal examples: 8113
+Abnormal CE loss: 0.0128
+Abnormal L2 loss: -0.9868
+Current GPU memory: 1.39 GB
+Validation time: 3.11s
+Model - Validation accuracy: 0.7850
+Model - FGSM accuracy: 0.5180
+Model - PGD accuracy: 0.4750
+WA Model - Validation accuracy: 0.7830
+WA Model - FGSM accuracy: 0.5670
+WA Model - PGD accuracy: 0.5440
+Best model: wa_model (PGD acc: 0.5440, Val acc: 0.7830)
+
+============ Epoch 67 ============
+Training time: 18.74s
+Training loss: 1.1450
+Training accuracy: 0.5870
+Abnormal examples: 8187
+Abnormal CE loss: 0.0127
+Abnormal L2 loss: -1.0282
+Current GPU memory: 1.39 GB
+Validation time: 3.26s
+Model - Validation accuracy: 0.7740
+Model - FGSM accuracy: 0.5070
+Model - PGD accuracy: 0.4610
+WA Model - Validation accuracy: 0.7870
+WA Model - FGSM accuracy: 0.5700
+WA Model - PGD accuracy: 0.5450
+Best model: wa_model (PGD acc: 0.5450, Val acc: 0.7870)
+
+============ Epoch 68 ============
+Training time: 19.61s
+Training loss: 1.1401
+Training accuracy: 0.5879
+Abnormal examples: 8401
+Abnormal CE loss: 0.0122
+Abnormal L2 loss: -0.9669
+Current GPU memory: 1.39 GB
+Validation time: 3.02s
+Model - Validation accuracy: 0.7730
+Model - FGSM accuracy: 0.5080
+Model - PGD accuracy: 0.4690
+WA Model - Validation accuracy: 0.7890
+WA Model - FGSM accuracy: 0.5700
+WA Model - PGD accuracy: 0.5430
+Best model: wa_model (PGD acc: 0.5430, Val acc: 0.7890)
+
+============ Epoch 69 ============
+Training time: 19.50s
+Training loss: 1.1276
+Training accuracy: 0.5904
+Abnormal examples: 8385
+Abnormal CE loss: 0.0119
+Abnormal L2 loss: -1.0444
+Current GPU memory: 1.39 GB
+Validation time: 3.30s
+Model - Validation accuracy: 0.7580
+Model - FGSM accuracy: 0.5180
+Model - PGD accuracy: 0.4770
+WA Model - Validation accuracy: 0.7900
+WA Model - FGSM accuracy: 0.5670
+WA Model - PGD accuracy: 0.5410
+Best model: wa_model (PGD acc: 0.5410, Val acc: 0.7900)
+
+============ Epoch 70 ============
+Training time: 20.68s
+Training loss: 1.1144
+Training accuracy: 0.5941
+Abnormal examples: 8638
+Abnormal CE loss: 0.0112
+Abnormal L2 loss: -1.0221
+Current GPU memory: 1.39 GB
+Validation time: 2.98s
+Model - Validation accuracy: 0.7720
+Model - FGSM accuracy: 0.5030
+Model - PGD accuracy: 0.4490
+WA Model - Validation accuracy: 0.7890
+WA Model - FGSM accuracy: 0.5660
+WA Model - PGD accuracy: 0.5370
+Best model: wa_model (PGD acc: 0.5370, Val acc: 0.7890)
+
+============ Epoch 71 ============
+Training time: 19.75s
+Training loss: 1.1065
+Training accuracy: 0.5945
+Abnormal examples: 8707
+Abnormal CE loss: 0.0112
+Abnormal L2 loss: -1.0719
+Current GPU memory: 1.39 GB
+Validation time: 3.10s
+Model - Validation accuracy: 0.7850
+Model - FGSM accuracy: 0.5180
+Model - PGD accuracy: 0.4650
+WA Model - Validation accuracy: 0.7880
+WA Model - FGSM accuracy: 0.5670
+WA Model - PGD accuracy: 0.5370
+Best model: wa_model (PGD acc: 0.5370, Val acc: 0.7880)
+
+============ Epoch 72 ============
+Training time: 19.61s
+Training loss: 1.0938
+Training accuracy: 0.5985
+Abnormal examples: 8808
+Abnormal CE loss: 0.0107
+Abnormal L2 loss: -1.0958
+Current GPU memory: 1.39 GB
+Validation time: 2.91s
+Model - Validation accuracy: 0.7830
+Model - FGSM accuracy: 0.5380
+Model - PGD accuracy: 0.4820
+WA Model - Validation accuracy: 0.7920
+WA Model - FGSM accuracy: 0.5650
+WA Model - PGD accuracy: 0.5400
+Best model: wa_model (PGD acc: 0.5400, Val acc: 0.7920)
+
+============ Epoch 73 ============
+Training time: 19.66s
+Training loss: 1.0831
+Training accuracy: 0.5991
+Abnormal examples: 8947
+Abnormal CE loss: 0.0107
+Abnormal L2 loss: -1.1316
+Current GPU memory: 1.39 GB
+Validation time: 3.28s
+Model - Validation accuracy: 0.7550
+Model - FGSM accuracy: 0.5200
+Model - PGD accuracy: 0.4830
+WA Model - Validation accuracy: 0.7940
+WA Model - FGSM accuracy: 0.5720
+WA Model - PGD accuracy: 0.5420
+Best model: wa_model (PGD acc: 0.5420, Val acc: 0.7940)
+
+============ Epoch 74 ============
+Training time: 19.54s
+Training loss: 1.0624
+Training accuracy: 0.6052
+Abnormal examples: 9363
+Abnormal CE loss: 0.0099
+Abnormal L2 loss: -1.1657
+Current GPU memory: 1.39 GB
+Validation time: 3.06s
+Model - Validation accuracy: 0.7610
+Model - FGSM accuracy: 0.5250
+Model - PGD accuracy: 0.4790
+WA Model - Validation accuracy: 0.7900
+WA Model - FGSM accuracy: 0.5730
+WA Model - PGD accuracy: 0.5430
+Best model: wa_model (PGD acc: 0.5430, Val acc: 0.7900)
+
+============ Epoch 75 ============
+Training time: 19.24s
+Training loss: 1.0531
+Training accuracy: 0.6082
+Abnormal examples: 9560
+Abnormal CE loss: 0.0095
+Abnormal L2 loss: -1.1793
+Current GPU memory: 1.39 GB
+Validation time: 3.31s
+Model - Validation accuracy: 0.7810
+Model - FGSM accuracy: 0.5080
+Model - PGD accuracy: 0.4770
+WA Model - Validation accuracy: 0.7940
+WA Model - FGSM accuracy: 0.5730
+WA Model - PGD accuracy: 0.5420
+Best model: wa_model (PGD acc: 0.5420, Val acc: 0.7940)
+
+============ Epoch 76 ============
+Training time: 19.11s
+Training loss: 1.0366
+Training accuracy: 0.6113
+Abnormal examples: 9677
+Abnormal CE loss: 0.0090
+Abnormal L2 loss: -1.2149
+Current GPU memory: 1.39 GB
+Validation time: 2.88s
+Model - Validation accuracy: 0.7880
+Model - FGSM accuracy: 0.5260
+Model - PGD accuracy: 0.4830
+WA Model - Validation accuracy: 0.7990
+WA Model - FGSM accuracy: 0.5740
+WA Model - PGD accuracy: 0.5420
+Best model: wa_model (PGD acc: 0.5420, Val acc: 0.7990)
+
+============ Epoch 77 ============
+Training time: 19.85s
+Training loss: 1.0149
+Training accuracy: 0.6156
+Abnormal examples: 10099
+Abnormal CE loss: 0.0083
+Abnormal L2 loss: -1.2392
+Current GPU memory: 1.39 GB
+Validation time: 3.15s
+Model - Validation accuracy: 0.7770
+Model - FGSM accuracy: 0.5070
+Model - PGD accuracy: 0.4580
+WA Model - Validation accuracy: 0.7990
+WA Model - FGSM accuracy: 0.5710
+WA Model - PGD accuracy: 0.5470
+Best model: wa_model (PGD acc: 0.5470, Val acc: 0.7990)
+
+============ Epoch 78 ============
+Training time: 19.41s
+Training loss: 0.9967
+Training accuracy: 0.6220
+Abnormal examples: 10318
+Abnormal CE loss: 0.0078
+Abnormal L2 loss: -1.2735
+Current GPU memory: 1.39 GB
+Validation time: 2.87s
+Model - Validation accuracy: 0.8080
+Model - FGSM accuracy: 0.5380
+Model - PGD accuracy: 0.4710
+WA Model - Validation accuracy: 0.7990
+WA Model - FGSM accuracy: 0.5730
+WA Model - PGD accuracy: 0.5490
+Best model: wa_model (PGD acc: 0.5490, Val acc: 0.7990)
+
+============ Epoch 79 ============
+Training time: 19.66s
+Training loss: 0.9779
+Training accuracy: 0.6279
+Abnormal examples: 10374
+Abnormal CE loss: 0.0075
+Abnormal L2 loss: -1.3414
+Current GPU memory: 1.39 GB
+Validation time: 3.18s
+Model - Validation accuracy: 0.7970
+Model - FGSM accuracy: 0.5330
+Model - PGD accuracy: 0.4720
+WA Model - Validation accuracy: 0.8030
+WA Model - FGSM accuracy: 0.5770
+WA Model - PGD accuracy: 0.5460
+Best model: wa_model (PGD acc: 0.5460, Val acc: 0.8030)
+
+============ Epoch 80 ============
+Training time: 19.84s
+Training loss: 0.9524
+Training accuracy: 0.6374
+Abnormal examples: 10720
+Abnormal CE loss: 0.0070
+Abnormal L2 loss: -1.4493
+Current GPU memory: 1.39 GB
+Validation time: 3.16s
+Model - Validation accuracy: 0.8160
+Model - FGSM accuracy: 0.5340
+Model - PGD accuracy: 0.4660
+WA Model - Validation accuracy: 0.8020
+WA Model - FGSM accuracy: 0.5830
+WA Model - PGD accuracy: 0.5480
+Best model: wa_model (PGD acc: 0.5480, Val acc: 0.8020)
+
+============ Epoch 81 ============
+Training time: 20.66s
+Training loss: 0.9367
+Training accuracy: 0.6398
+Abnormal examples: 10749
+Abnormal CE loss: 0.0066
+Abnormal L2 loss: -1.5497
+Current GPU memory: 1.39 GB
+Validation time: 3.17s
+Model - Validation accuracy: 0.8100
+Model - FGSM accuracy: 0.5320
+Model - PGD accuracy: 0.4780
+WA Model - Validation accuracy: 0.8060
+WA Model - FGSM accuracy: 0.5850
+WA Model - PGD accuracy: 0.5440
+Best model: wa_model (PGD acc: 0.5440, Val acc: 0.8060)
+
+============ Epoch 82 ============
+Training time: 18.96s
+Training loss: 0.9064
+Training accuracy: 0.6499
+Abnormal examples: 11226
+Abnormal CE loss: 0.0063
+Abnormal L2 loss: -1.7395
+Current GPU memory: 1.39 GB
+Validation time: 3.21s
+Model - Validation accuracy: 0.8150
+Model - FGSM accuracy: 0.5490
+Model - PGD accuracy: 0.4840
+WA Model - Validation accuracy: 0.8070
+WA Model - FGSM accuracy: 0.5850
+WA Model - PGD accuracy: 0.5420
+Best model: wa_model (PGD acc: 0.5420, Val acc: 0.8070)
+
+============ Epoch 83 ============
+Training time: 19.82s
+Training loss: 0.8784
+Training accuracy: 0.6546
+Abnormal examples: 11596
+Abnormal CE loss: 0.0056
+Abnormal L2 loss: -1.8464
+Current GPU memory: 1.39 GB
+Validation time: 3.07s
+Model - Validation accuracy: 0.8090
+Model - FGSM accuracy: 0.5390
+Model - PGD accuracy: 0.4600
+WA Model - Validation accuracy: 0.8060
+WA Model - FGSM accuracy: 0.5820
+WA Model - PGD accuracy: 0.5380
+Best model: wa_model (PGD acc: 0.5380, Val acc: 0.8060)
+
+============ Epoch 84 ============
+Training time: 19.29s
+Training loss: 0.8503
+Training accuracy: 0.6651
+Abnormal examples: 12220
+Abnormal CE loss: 0.0051
+Abnormal L2 loss: -1.9174
+Current GPU memory: 1.39 GB
+Validation time: 2.84s
+Model - Validation accuracy: 0.8040
+Model - FGSM accuracy: 0.5300
+Model - PGD accuracy: 0.4700
+WA Model - Validation accuracy: 0.8090
+WA Model - FGSM accuracy: 0.5800
+WA Model - PGD accuracy: 0.5330
+Best model: wa_model (PGD acc: 0.5330, Val acc: 0.8090)
+
+============ Epoch 85 ============
+Training time: 19.38s
+Training loss: 0.8205
+Training accuracy: 0.6761
+Abnormal examples: 12588
+Abnormal CE loss: 0.0047
+Abnormal L2 loss: -2.0764
+Current GPU memory: 1.39 GB
+Validation time: 2.74s
+Model - Validation accuracy: 0.8020
+Model - FGSM accuracy: 0.5380
+Model - PGD accuracy: 0.4770
+WA Model - Validation accuracy: 0.8140
+WA Model - FGSM accuracy: 0.5770
+WA Model - PGD accuracy: 0.5300
+Best model: wa_model (PGD acc: 0.5300, Val acc: 0.8140)
+
+============ Epoch 86 ============
+Training time: 19.48s
+Training loss: 0.7803
+Training accuracy: 0.6871
+Abnormal examples: 12934
+Abnormal CE loss: 0.0042
+Abnormal L2 loss: -2.1764
+Current GPU memory: 1.39 GB
+Validation time: 2.68s
+Model - Validation accuracy: 0.8150
+Model - FGSM accuracy: 0.5530
+Model - PGD accuracy: 0.4910
+WA Model - Validation accuracy: 0.8160
+WA Model - FGSM accuracy: 0.5770
+WA Model - PGD accuracy: 0.5290
+Best model: wa_model (PGD acc: 0.5290, Val acc: 0.8160)
+
+============ Epoch 87 ============
+Training time: 19.55s
+Training loss: 0.7441
+Training accuracy: 0.6998
+Abnormal examples: 13266
+Abnormal CE loss: 0.0038
+Abnormal L2 loss: -2.3647
+Current GPU memory: 1.39 GB
+Validation time: 3.01s
+Model - Validation accuracy: 0.8100
+Model - FGSM accuracy: 0.5580
+Model - PGD accuracy: 0.4820
+WA Model - Validation accuracy: 0.8150
+WA Model - FGSM accuracy: 0.5760
+WA Model - PGD accuracy: 0.5290
+Best model: wa_model (PGD acc: 0.5290, Val acc: 0.8150)
+
+============ Epoch 88 ============
+Training time: 20.21s
+Training loss: 0.7080
+Training accuracy: 0.7112
+Abnormal examples: 13606
+Abnormal CE loss: 0.0034
+Abnormal L2 loss: -2.5961
+Current GPU memory: 1.39 GB
+Validation time: 2.79s
+Model - Validation accuracy: 0.8270
+Model - FGSM accuracy: 0.5430
+Model - PGD accuracy: 0.4730
+WA Model - Validation accuracy: 0.8170
+WA Model - FGSM accuracy: 0.5830
+WA Model - PGD accuracy: 0.5260
+Best model: wa_model (PGD acc: 0.5260, Val acc: 0.8170)
+
+============ Epoch 89 ============
+Training time: 20.15s
+Training loss: 0.6655
+Training accuracy: 0.7247
+Abnormal examples: 13931
+Abnormal CE loss: 0.0029
+Abnormal L2 loss: -2.6876
+Current GPU memory: 1.39 GB
+Validation time: 2.90s
+Model - Validation accuracy: 0.8140
+Model - FGSM accuracy: 0.5290
+Model - PGD accuracy: 0.4410
+WA Model - Validation accuracy: 0.8180
+WA Model - FGSM accuracy: 0.5740
+WA Model - PGD accuracy: 0.5280
+Best model: wa_model (PGD acc: 0.5280, Val acc: 0.8180)
+
+============ Epoch 90 ============
+Training time: 19.38s
+Training loss: 0.6228
+Training accuracy: 0.7402
+Abnormal examples: 14418
+Abnormal CE loss: 0.0026
+Abnormal L2 loss: -2.8087
+Current GPU memory: 1.39 GB
+Validation time: 2.70s
+Model - Validation accuracy: 0.8390
+Model - FGSM accuracy: 0.5450
+Model - PGD accuracy: 0.4740
+WA Model - Validation accuracy: 0.8200
+WA Model - FGSM accuracy: 0.5730
+WA Model - PGD accuracy: 0.5250
+Best model: wa_model (PGD acc: 0.5250, Val acc: 0.8200)
+
+============ Epoch 91 ============
+Training time: 18.90s
+Training loss: 0.5806
+Training accuracy: 0.7542
+Abnormal examples: 14452
+Abnormal CE loss: 0.0023
+Abnormal L2 loss: -2.9641
+Current GPU memory: 1.39 GB
+Validation time: 2.78s
+Model - Validation accuracy: 0.8320
+Model - FGSM accuracy: 0.5420
+Model - PGD accuracy: 0.4650
+WA Model - Validation accuracy: 0.8220
+WA Model - FGSM accuracy: 0.5700
+WA Model - PGD accuracy: 0.5190
+Best model: wa_model (PGD acc: 0.5190, Val acc: 0.8220)
+
+============ Epoch 92 ============
+Training time: 19.76s
+Training loss: 0.5478
+Training accuracy: 0.7658
+Abnormal examples: 14595
+Abnormal CE loss: 0.0021
+Abnormal L2 loss: -3.0875
+Current GPU memory: 1.39 GB
+Validation time: 2.77s
+Model - Validation accuracy: 0.8270
+Model - FGSM accuracy: 0.5360
+Model - PGD accuracy: 0.4630
+WA Model - Validation accuracy: 0.8230
+WA Model - FGSM accuracy: 0.5630
+WA Model - PGD accuracy: 0.5140
+Best model: wa_model (PGD acc: 0.5140, Val acc: 0.8230)
+
+============ Epoch 93 ============
+Training time: 19.16s
+Training loss: 0.5097
+Training accuracy: 0.7807
+Abnormal examples: 14586
+Abnormal CE loss: 0.0019
+Abnormal L2 loss: -3.1248
+Current GPU memory: 1.39 GB
+Validation time: 2.95s
+Model - Validation accuracy: 0.8360
+Model - FGSM accuracy: 0.5490
+Model - PGD accuracy: 0.4690
+WA Model - Validation accuracy: 0.8250
+WA Model - FGSM accuracy: 0.5660
+WA Model - PGD accuracy: 0.5160
+Best model: wa_model (PGD acc: 0.5160, Val acc: 0.8250)
+
+============ Epoch 94 ============
+Training time: 19.33s
+Training loss: 0.4779
+Training accuracy: 0.7929
+Abnormal examples: 14600
+Abnormal CE loss: 0.0017
+Abnormal L2 loss: -3.2089
+Current GPU memory: 1.39 GB
+Validation time: 2.78s
+Model - Validation accuracy: 0.8320
+Model - FGSM accuracy: 0.5350
+Model - PGD accuracy: 0.4590
+WA Model - Validation accuracy: 0.8260
+WA Model - FGSM accuracy: 0.5590
+WA Model - PGD accuracy: 0.5040
+Best model: wa_model (PGD acc: 0.5040, Val acc: 0.8260)
+
+============ Epoch 95 ============
+Training time: 18.81s
+Training loss: 0.4515
+Training accuracy: 0.8022
+Abnormal examples: 14222
+Abnormal CE loss: 0.0016
+Abnormal L2 loss: -3.2234
+Current GPU memory: 1.39 GB
+Validation time: 3.23s
+Model - Validation accuracy: 0.8330
+Model - FGSM accuracy: 0.5430
+Model - PGD accuracy: 0.4610
+WA Model - Validation accuracy: 0.8280
+WA Model - FGSM accuracy: 0.5590
+WA Model - PGD accuracy: 0.5040
+Best model: wa_model (PGD acc: 0.5040, Val acc: 0.8280)
+
+============ Epoch 96 ============
+Training time: 18.63s
+Training loss: 0.4324
+Training accuracy: 0.8082
+Abnormal examples: 14190
+Abnormal CE loss: 0.0015
+Abnormal L2 loss: -3.2300
+Current GPU memory: 1.39 GB
+Validation time: 3.06s
+Model - Validation accuracy: 0.8310
+Model - FGSM accuracy: 0.5390
+Model - PGD accuracy: 0.4540
+WA Model - Validation accuracy: 0.8280
+WA Model - FGSM accuracy: 0.5580
+WA Model - PGD accuracy: 0.4990
+Best model: wa_model (PGD acc: 0.4990, Val acc: 0.8280)
+
+============ Epoch 97 ============
+Training time: 19.08s
+Training loss: 0.4208
+Training accuracy: 0.8130
+Abnormal examples: 14318
+Abnormal CE loss: 0.0015
+Abnormal L2 loss: -3.2102
+Current GPU memory: 1.39 GB
+Validation time: 2.98s
+Model - Validation accuracy: 0.8420
+Model - FGSM accuracy: 0.5440
+Model - PGD accuracy: 0.4520
+WA Model - Validation accuracy: 0.8270
+WA Model - FGSM accuracy: 0.5600
+WA Model - PGD accuracy: 0.5000
+Best model: wa_model (PGD acc: 0.5000, Val acc: 0.8270)
+
+============ Epoch 98 ============
+Training time: 19.22s
+Training loss: 0.4182
+Training accuracy: 0.8150
+Abnormal examples: 14238
+Abnormal CE loss: 0.0015
+Abnormal L2 loss: -3.2095
+Current GPU memory: 1.39 GB
+Validation time: 2.71s
+Model - Validation accuracy: 0.8360
+Model - FGSM accuracy: 0.5430
+Model - PGD accuracy: 0.4570
+WA Model - Validation accuracy: 0.8280
+WA Model - FGSM accuracy: 0.5530
+WA Model - PGD accuracy: 0.4920
+Best model: wa_model (PGD acc: 0.4920, Val acc: 0.8280)
+
+============ Epoch 99 ============
+Training time: 19.38s
+Training loss: 0.4125
+Training accuracy: 0.8164
+Abnormal examples: 14017
+Abnormal CE loss: 0.0015
+Abnormal L2 loss: -3.1894
+Current GPU memory: 1.39 GB
+Validation time: 2.64s
+Model - Validation accuracy: 0.8350
+Model - FGSM accuracy: 0.5460
+Model - PGD accuracy: 0.4640
+WA Model - Validation accuracy: 0.8310
+WA Model - FGSM accuracy: 0.5540
+WA Model - PGD accuracy: 0.4850
+Best model: wa_model (PGD acc: 0.4850, Val acc: 0.8310)
+
+train_acc_list: 
+[0.18187755102040817, 0.2333673469387755, 0.2616530612244898, 0.27861224489795916, 0.29689795918367345, 0.31351020408163266, 0.33387755102040817, 0.3486734693877551, 0.3648571428571429, 0.3763265306122449, 0.39083673469387753, 0.4032857142857143, 0.4169795918367347, 0.42644897959183675, 0.43689795918367347, 0.44646938775510203, 0.45483673469387753, 0.4653673469387755, 0.4698163265306122, 0.4806938775510204, 0.48873469387755103, 0.4960204081632653, 0.5013877551020408, 0.5034897959183674, 0.5085714285714286, 0.5150204081632653, 0.519265306122449, 0.5210816326530612, 0.528469387755102, 0.5309795918367347, 0.5321632653061225, 0.5351428571428571, 0.5383265306122449, 0.5424897959183673, 0.5418571428571428, 0.5449387755102041, 0.5474285714285714, 0.550734693877551, 0.5534285714285714, 0.5548571428571428, 0.5540204081632653, 0.5550612244897959, 0.5556938775510204, 0.5581224489795918, 0.5613469387755102, 0.5606122448979591, 0.5620612244897959, 0.5623877551020409, 0.5641224489795919, 0.5628367346938775, 0.5638571428571428, 0.5679591836734694, 0.5677551020408164, 0.5668367346938775, 0.5692244897959183, 0.5699795918367347, 0.5731224489795919, 0.5735918367346938, 0.573734693877551, 0.5747551020408164, 0.5738979591836735, 0.5758163265306122, 0.5803061224489796, 0.5835510204081633, 0.5836530612244898, 0.5819591836734694, 0.5818571428571429, 0.5869591836734694, 0.5878571428571429, 0.5904081632653061, 0.5941428571428572, 0.594530612244898, 0.5984693877551021, 0.5991020408163266, 0.6051836734693877, 0.6081836734693877, 0.6113061224489796, 0.6156122448979592, 0.6219591836734694, 0.6278571428571429, 0.6374081632653061, 0.6397755102040816, 0.6498979591836734, 0.6545510204081633, 0.6651428571428571, 0.6761224489795918, 0.6870816326530612, 0.6997755102040817, 0.7111632653061224, 0.7246734693877551, 0.7402244897959184, 0.7542244897959184, 0.7658367346938776, 0.7807142857142857, 0.7929387755102041, 0.8021836734693878, 0.8082448979591836, 0.8129795918367347, 0.8149591836734694, 0.8164081632653061]
+
+model_val_acc_list: 
+[0.313, 0.341, 0.414, 0.442, 0.494, 0.487, 0.495, 0.563, 0.559, 0.583, 0.611, 0.618, 0.644, 0.645, 0.66, 0.629, 0.698, 0.689, 0.708, 0.681, 0.702, 0.695, 0.734, 0.732, 0.737, 0.713, 0.738, 0.716, 0.697, 0.712, 0.721, 0.735, 0.731, 0.667, 0.698, 0.728, 0.725, 0.698, 0.733, 0.731, 0.731, 0.739, 0.752, 0.745, 0.732, 0.735, 0.733, 0.74, 0.725, 0.754, 0.748, 0.725, 0.741, 0.761, 0.749, 0.76, 0.743, 0.746, 0.769, 0.771, 0.775, 0.761, 0.769, 0.762, 0.746, 0.781, 0.785, 0.774, 0.773, 0.758, 0.772, 0.785, 0.783, 0.755, 0.761, 0.781, 0.788, 0.777, 0.808, 0.797, 0.816, 0.81, 0.815, 0.809, 0.804, 0.802, 0.815, 0.81, 0.827, 0.814, 0.839, 0.832, 0.827, 0.836, 0.832, 0.833, 0.831, 0.842, 0.836, 0.835]
+
+model_pgd_acc_list: 
+[0.226, 0.259, 0.26, 0.27, 0.324, 0.325, 0.342, 0.372, 0.365, 0.386, 0.389, 0.36, 0.38, 0.411, 0.412, 0.405, 0.404, 0.417, 0.43, 0.422, 0.438, 0.435, 0.442, 0.45, 0.436, 0.436, 0.404, 0.431, 0.435, 0.427, 0.446, 0.458, 0.432, 0.398, 0.452, 0.43, 0.449, 0.443, 0.463, 0.429, 0.448, 0.45, 0.458, 0.46, 0.441, 0.462, 0.439, 0.473, 0.458, 0.454, 0.45, 0.472, 0.446, 0.44, 0.424, 0.461, 0.454, 0.443, 0.46, 0.471, 0.483, 0.46, 0.468, 0.469, 0.458, 0.457, 0.475, 0.461, 0.469, 0.477, 0.449, 0.465, 0.482, 0.483, 0.479, 0.477, 0.483, 0.458, 0.471, 0.472, 0.466, 0.478, 0.484, 0.46, 0.47, 0.477, 0.491, 0.482, 0.473, 0.441, 0.474, 0.465, 0.463, 0.469, 0.459, 0.461, 0.454, 0.452, 0.457, 0.464]
+
+model_fgsm_acc_list: 
+[0.226, 0.26, 0.263, 0.273, 0.335, 0.328, 0.349, 0.384, 0.375, 0.406, 0.407, 0.381, 0.401, 0.434, 0.435, 0.422, 0.427, 0.446, 0.462, 0.457, 0.468, 0.463, 0.482, 0.483, 0.484, 0.473, 0.447, 0.458, 0.452, 0.462, 0.471, 0.483, 0.468, 0.441, 0.479, 0.466, 0.481, 0.469, 0.499, 0.46, 0.479, 0.483, 0.494, 0.494, 0.477, 0.492, 0.474, 0.512, 0.488, 0.492, 0.488, 0.511, 0.482, 0.489, 0.464, 0.503, 0.495, 0.485, 0.508, 0.513, 0.51, 0.519, 0.507, 0.517, 0.49, 0.506, 0.518, 0.507, 0.508, 0.518, 0.503, 0.518, 0.538, 0.52, 0.525, 0.508, 0.526, 0.507, 0.538, 0.533, 0.534, 0.532, 0.549, 0.539, 0.53, 0.538, 0.553, 0.558, 0.543, 0.529, 0.545, 0.542, 0.536, 0.549, 0.535, 0.543, 0.539, 0.544, 0.543, 0.546]
+
+wa_val_acc_list: 
+[0.078, 0.078, 0.078, 0.078, 0.078, 0.078, 0.078, 0.08, 0.096, 0.105, 0.126, 0.145, 0.175, 0.203, 0.238, 0.275, 0.304, 0.306, 0.299, 0.273, 0.232, 0.183, 0.145, 0.119, 0.112, 0.108, 0.105, 0.105, 0.105, 0.106, 0.109, 0.116, 0.128, 0.15, 0.193, 0.253, 0.322, 0.413, 0.483, 0.537, 0.584, 0.63, 0.653, 0.666, 0.684, 0.706, 0.714, 0.718, 0.729, 0.739, 0.738, 0.745, 0.752, 0.752, 0.754, 0.758, 0.759, 0.764, 0.765, 0.767, 0.77, 0.769, 0.769, 0.774, 0.775, 0.78, 0.783, 0.787, 0.789, 0.79, 0.789, 0.788, 0.792, 0.794, 0.79, 0.794, 0.799, 0.799, 0.799, 0.803, 0.802, 0.806, 0.807, 0.806, 0.809, 0.814, 0.816, 0.815, 0.817, 0.818, 0.82, 0.822, 0.823, 0.825, 0.826, 0.828, 0.828, 0.827, 0.828, 0.831]
+
+wa_pgd_acc_list: 
+[0.078, 0.078, 0.078, 0.078, 0.078, 0.078, 0.078, 0.079, 0.085, 0.089, 0.104, 0.105, 0.118, 0.13, 0.156, 0.172, 0.185, 0.193, 0.187, 0.174, 0.156, 0.129, 0.115, 0.11, 0.107, 0.107, 0.103, 0.102, 0.103, 0.104, 0.107, 0.108, 0.115, 0.124, 0.137, 0.172, 0.223, 0.271, 0.325, 0.374, 0.418, 0.447, 0.467, 0.488, 0.504, 0.513, 0.525, 0.53, 0.534, 0.533, 0.531, 0.535, 0.537, 0.538, 0.538, 0.539, 0.539, 0.542, 0.542, 0.544, 0.544, 0.55, 0.539, 0.538, 0.541, 0.545, 0.544, 0.545, 0.543, 0.541, 0.537, 0.537, 0.54, 0.542, 0.543, 0.542, 0.542, 0.547, 0.549, 0.546, 0.548, 0.544, 0.542, 0.538, 0.533, 0.53, 0.529, 0.529, 0.526, 0.528, 0.525, 0.519, 0.514, 0.516, 0.504, 0.504, 0.499, 0.5, 0.492, 0.485]
+
+wa_fgsm_acc_list: 
+[0.078, 0.078, 0.078, 0.078, 0.078, 0.078, 0.078, 0.079, 0.085, 0.088, 0.105, 0.105, 0.119, 0.13, 0.159, 0.172, 0.186, 0.193, 0.19, 0.176, 0.158, 0.13, 0.115, 0.11, 0.107, 0.107, 0.103, 0.103, 0.103, 0.104, 0.107, 0.108, 0.115, 0.125, 0.14, 0.174, 0.224, 0.274, 0.331, 0.38, 0.428, 0.454, 0.476, 0.498, 0.511, 0.522, 0.534, 0.543, 0.548, 0.545, 0.551, 0.549, 0.554, 0.558, 0.564, 0.564, 0.561, 0.561, 0.561, 0.565, 0.565, 0.567, 0.565, 0.566, 0.561, 0.566, 0.567, 0.57, 0.57, 0.567, 0.566, 0.567, 0.565, 0.572, 0.573, 0.573, 0.574, 0.571, 0.573, 0.577, 0.583, 0.585, 0.585, 0.582, 0.58, 0.577, 0.577, 0.576, 0.583, 0.574, 0.573, 0.57, 0.563, 0.566, 0.559, 0.559, 0.558, 0.56, 0.553, 0.554]
+
+total_training_time: 
+1939.2522435188293
+
+total_val_time: 
+298.75971817970276
+
+max_gpu_memory: 1.39 GB
+
+==================================================
+Starting final evaluation on test set...
+==================================================
+PGD test results:
+  clean_acc: 0.7745
+  pgd_10_acc: 0.5270
+  pgd_20_acc: 0.5227
+  pgd_50_acc: 0.5221
+AutoAttack results:
+  autoattack_acc: 0.4724
+CR-Attack results:
+  cr_attack_acc: 0.4733
