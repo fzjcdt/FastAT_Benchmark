@@ -1,0 +1,15 @@
+name: liet
+total_epoch: 100
+scheduler: one_cycle
+lr: 0.1
+momentum: 0.9
+weight_decay: 5e-4
+label_smoothing: 0.6
+weight_average: true
+tau: 0.9995
+lambda: 100
+min_mask_ratio: 0.1
+max_mask_ratio: 0.5
+li_update: 20
+class_num: 10
+image_size: 32

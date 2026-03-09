@@ -1,0 +1,18 @@
+# RS-AAER configuration for CIFAR-10
+name: rs_aaer
+total_epoch: 100
+scheduler: one_cycle
+lr: 0.1
+momentum: 0.9
+weight_decay: 5e-4
+label_smoothing: 0.4
+weight_average: true
+tau: 0.9995
+scheduler_milestones: [90, 95]
+scheduler_gamma: 0.1
+lamda1: 1.0
+lamda2: 2.5
+lamda3: 1.5
+clamp: 1
+fgsm_alpha: 1.25
+delta_init: random

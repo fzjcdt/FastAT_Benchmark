@@ -1,0 +1,16 @@
+# ZeroGrad configuration for CIFAR-100
+name: zero_grad
+total_epoch: 100
+scheduler: one_cycle
+lr: 0.1
+momentum: 0.9
+weight_decay: 5e-4
+label_smoothing: 0.4
+weight_average: true
+tau: 0.9995
+scheduler_milestones: [90, 95]
+scheduler_gamma: 0.1
+q_val: 0.45
+q_iters: 1
+fgsm_init: random
+fgsm_alpha: 2.0

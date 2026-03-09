@@ -1,0 +1,18 @@
+# FGSM-CUAP configuration for CIFAR-10
+name: fgsm_cuap
+total_epoch: 100
+scheduler: one_cycle
+lr: 0.1
+momentum: 0.9
+weight_decay: 5e-4
+label_smoothing: 0.4
+weight_average: true
+tau: 0.9995
+scheduler_milestones: [90, 95]
+scheduler_gamma: 0.1
+class_num: 10
+image_shape: [3, 32, 32]
+eval_start: 0
+momentum_decay: 0.3
+lamda: 10
+uap_eps: 0.0392156862745098

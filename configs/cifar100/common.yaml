@@ -1,0 +1,9 @@
+dataset: cifar100
+data_dir: ./data/cifar100
+model: ResNet18
+batch_size: 128
+num_workers: 4
+train_size: 49000
+val_size: 1000
+eps: 8.0/255
+log_dir: ./log/cifar100

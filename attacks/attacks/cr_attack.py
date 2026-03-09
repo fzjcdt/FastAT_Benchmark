@@ -1,0 +1,327 @@
+import time
+import torch
+import torch.nn as nn
+
+from ..attack import Attack
+
+from utils import Logger
+
+
+class CRAttack(Attack):
+    """
+    Constraint relaxation attack
+    """
+
+    def __init__(self, model, eps=8 / 255,
+                 max_iter=150, decay_steps=30, target_numbers=3, restart=5, random_start=True, seed=0, log_path=None):
+        """
+        :
+        :param model: the model to attack
+        :param eps: max perturbation
+        :param max_iter: max iteration
+        :param decay_steps: decay steps
+        :param target_numbers: target numbers
+        :param restart: restart numbers
+        :param random_start: random start
+        :param seed: random seed
+        """
+        super().__init__("CR Attack", model)
+        torch.random.manual_seed(seed)
+        torch.cuda.random.manual_seed(seed)
+        self.eps = eps
+        self.alpha = eps
+        self.max_iter = max_iter
+        self.decay_steps = decay_steps
+        self.target_num = target_numbers
+        self.restart = restart
+        self.random_start = random_start
+        if log_path is not None:
+            self.logger = Logger(log_path)
+        else:
+            self.logger = None
+        self._supported_mode = ['Linf']
+
+    def margin(self, x, y):
+        logits = self.model(x)
+        u = torch.arange(x.shape[0])
+        y_corr = logits[u, y].clone()
+        logits[u, y] = -float('inf')
+        y_others = logits.max(dim=-1)[0]
+
+        return y_corr - y_others
+
+    def get_pred(self, x, y):
+        logits = self.model(x)
+        u = torch.arange(x.shape[0])
+        logits[u, y] = -float('inf')
+        return logits.argsort(dim=-1, descending=True)
+
+    def pgd(self, images, labels):
+        forward_num, backward_num = torch.zeros(images.shape[0]).to(self.device), torch.zeros(images.shape[0]).to(
+            self.device)
+
+        loss = nn.CrossEntropyLoss(reduction='sum')
+        adv_images = images.clone().detach()
+
+        if self.random_start:
+            adv_images += torch.empty_like(adv_images).uniform_(-self.eps, self.eps)
+            adv_images = torch.clamp(adv_images, min=0, max=1).detach()
+
+        margin_min = self.margin(adv_images, labels)
+        forward_num += 1
+
+        idx_to_fool = (margin_min > 0.0).nonzero().flatten()
+        if len(idx_to_fool) == 0:
+            return adv_images, forward_num, backward_num
+
+        # PGD
+        cur_images = images[idx_to_fool]
+        cur_adv_images = adv_images[idx_to_fool]
+        cur_y = labels[idx_to_fool]
+
+        for step in range(self.decay_steps // 3):
+            scale = 0.5
+            if step == self.decay_steps // 6:
+                scale *= 0.5
+
+            cur_adv_images.requires_grad_()
+            outputs = self.model(cur_adv_images)
+            cost = loss(outputs, cur_y)
+
+            forward_num[idx_to_fool] += 1
+
+            grad = torch.autograd.grad(cost, cur_adv_images,
+                                       retain_graph=False, create_graph=False)[0]
+            backward_num[idx_to_fool] += 1
+
+            # early stop
+            u = torch.arange(cur_adv_images.shape[0], device=self.device)
+            outputs_copy = outputs.clone().detach()
+            y_corr = outputs[u, cur_y].clone().detach()
+            outputs_copy[u, cur_y] = -float('inf')
+            y_others = outputs_copy.max(dim=-1)[0].clone().detach()
+            margin_min = y_corr - y_others
+
+            idx_success = (margin_min < 0.0).nonzero().flatten()
+            if len(idx_success) != 0:
+                adv_images[idx_to_fool[idx_success]] = cur_adv_images[idx_success].detach()
+
+            sub_idx_to_fool = (margin_min >= 0.0).nonzero().flatten()
+            if len(sub_idx_to_fool) == 0:
+                return adv_images, forward_num, backward_num
+
+            # update idx_to_fool
+            if len(idx_success) != 0:
+                idx_to_fool = idx_to_fool[sub_idx_to_fool]
+                cur_images = cur_images[sub_idx_to_fool]
+                cur_y = cur_y[sub_idx_to_fool].clone().detach()
+
+                cur_adv_images = cur_adv_images[sub_idx_to_fool] + self.alpha * scale * grad[sub_idx_to_fool].sign()
+                delta = torch.clamp(cur_adv_images - cur_images, min=-self.eps, max=self.eps)
+                cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1).detach()
+            else:
+                cur_adv_images = cur_adv_images.detach() + self.alpha * scale * grad.sign()
+                delta = torch.clamp(cur_adv_images - cur_images, min=-self.eps, max=self.eps)
+                cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1).detach()
+
+        adv_images[idx_to_fool] = cur_adv_images
+
+        return adv_images, forward_num, backward_num
+
+    def cr_attack(self, images, adv_images, labels, restart_idx=None):
+        forward_num, backward_num = torch.zeros(images.shape[0]).to(self.device), torch.zeros(images.shape[0]).to(
+            self.device)
+
+        # prediction of adversarial examples generated by PGD
+        max_pred = self.get_pred(adv_images, labels).clone().detach()
+        forward_num += 1
+
+        potential_idx = torch.zeros((self.target_num, images.shape[0])).type(torch.bool).to(self.device)
+
+        # constraint relaxation attack
+        for target_index in range(self.target_num):
+            scale = 1.0
+
+            margin_min = self.margin(adv_images, labels)
+            forward_num += 1
+            if restart_idx is not None:
+                idx_to_fool = ((margin_min >= 0.0) & restart_idx[target_index]).nonzero().flatten()
+            else:
+                idx_to_fool = (margin_min >= 0.0).nonzero().flatten()
+
+            if len(idx_to_fool) == 0:
+                return adv_images, forward_num, backward_num, potential_idx
+
+            cur_images = images[idx_to_fool]
+
+            cur_adv_images = cur_images + torch.empty_like(cur_images).uniform_(-self.eps, self.eps)
+            cur_adv_images = torch.clamp(cur_adv_images, min=0, max=1)
+
+            cur_y = labels[idx_to_fool]
+            target_y = max_pred[idx_to_fool]
+
+            for i in range(self.max_iter):
+                if i % self.decay_steps == 0:
+                    scale *= 0.5
+                    scale = max(scale, 0.05)
+
+                if i % self.decay_steps < self.decay_steps // 3:
+                    cur_eps = self.eps + self.alpha * scale
+                elif i % self.decay_steps < self.decay_steps // 3 * 2:
+                    cur_eps = self.eps
+                elif i % self.decay_steps == self.decay_steps // 3 * 2:
+                    cur_eps = self.eps - self.alpha * scale
+                    delta = torch.clamp(cur_adv_images - cur_images, min=-cur_eps, max=cur_eps)
+                    cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1)
+
+                    cur_adv_images += torch.empty_like(cur_adv_images).uniform_(-self.alpha * scale, self.alpha * scale)
+                    cur_adv_images = torch.clamp(cur_adv_images, min=0, max=1)
+                    cur_eps = self.eps
+                else:
+                    cur_eps = self.eps
+
+                # Avoid modifying `requires_grad` directly on non-leaf tensors
+                cur_adv_images.requires_grad_()
+                outputs = self.model(cur_adv_images)
+                u = torch.arange(cur_adv_images.shape[0])
+                margin_min = outputs[u, cur_y] - outputs[u, target_y[:, target_index]]
+                cost = -margin_min.sum()
+                forward_num[idx_to_fool] += 1
+
+                grad = torch.autograd.grad(cost, cur_adv_images, retain_graph=False, create_graph=False)[0]
+                backward_num[idx_to_fool] += 1
+
+                if i % self.decay_steps > self.decay_steps // 3:
+                    potential_idx[target_index][idx_to_fool[(margin_min < 0.05).nonzero().flatten()]] = True
+
+                    idx_success = (margin_min < 0.0).nonzero().flatten()
+
+                    if len(idx_success) != 0:
+                        adv_images[idx_to_fool[idx_success]] = cur_adv_images[idx_success].detach()
+
+                    if i % self.decay_steps == self.decay_steps // 3 * 2 - 1:
+                        sub_idx_to_fool = ((margin_min >= 0.0) & (margin_min <= 1.0 * scale)).nonzero().flatten()
+                    else:
+                        sub_idx_to_fool = (margin_min >= 0.0).nonzero().flatten()
+                    if len(sub_idx_to_fool) == 0:
+                        break
+
+                    # dummy idx success
+                    idx_success = ((margin_min < 0.0) | (margin_min > 1.0 * scale)).nonzero().flatten()
+                    if len(idx_success) != 0:
+                        idx_to_fool = idx_to_fool[sub_idx_to_fool]
+                        cur_images = cur_images[sub_idx_to_fool]
+                        cur_y = cur_y[sub_idx_to_fool]
+                        target_y = target_y[sub_idx_to_fool]
+
+                        cur_adv_images = cur_adv_images[sub_idx_to_fool] + self.alpha * scale * grad[
+                            sub_idx_to_fool].sign()
+                        delta = torch.clamp(cur_adv_images - cur_images, min=-cur_eps, max=cur_eps)
+                        cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1)
+                    else:
+                        cur_adv_images = cur_adv_images + self.alpha * scale * grad.sign()
+                        delta = torch.clamp(cur_adv_images - cur_images, min=-cur_eps, max=cur_eps)
+                        cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1)
+                else:
+                    cur_adv_images = cur_adv_images + self.alpha * scale * grad.sign()
+                    delta = torch.clamp(cur_adv_images - cur_images, min=-cur_eps, max=cur_eps)
+                    cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1)
+
+                if i % self.decay_steps <= self.decay_steps // 3:
+                    delta = torch.clamp(cur_adv_images - cur_images, min=-self.eps, max=self.eps)
+                    temp_cur_adv_images = torch.clamp(cur_images + delta, min=0, max=1)
+
+                    margin_min = self.margin(temp_cur_adv_images, cur_y)
+                    forward_num[idx_to_fool] += 1
+
+                    potential_idx[target_index][idx_to_fool[(margin_min < 0.05).nonzero().flatten()]] = True
+
+                    idx_success = (margin_min < 0.0).nonzero().flatten()
+                    if len(idx_success) != 0:
+                        adv_images[idx_to_fool[idx_success]] = temp_cur_adv_images[idx_success]
+
+                    sub_idx_to_fool = (margin_min >= 0.0).nonzero().flatten()
+                    if len(sub_idx_to_fool) == 0:
+                        break
+
+                    if len(idx_success) != 0:
+                        idx_to_fool = idx_to_fool[sub_idx_to_fool]
+                        cur_images = cur_images[sub_idx_to_fool]
+                        cur_adv_images = cur_adv_images[sub_idx_to_fool]
+                        cur_y = cur_y[sub_idx_to_fool]
+                        target_y = target_y[sub_idx_to_fool]
+
+        # Return the updated adversarial images
+        delta = torch.clamp(adv_images - images, min=-self.eps, max=self.eps)
+        adv_images = torch.clamp(images + delta, min=0, max=1).detach()
+
+        return adv_images, forward_num, backward_num, potential_idx
+
+    def forward(self, images, labels):
+        forward_num, backward_num = torch.zeros(images.shape[0]).to(self.device), torch.zeros(images.shape[0]).to(
+            self.device)
+
+        images = images.clone().detach().to(self.device)
+        labels = labels.clone().detach().to(self.device)
+
+        # use PGD to find most likely target
+        adv_images, f_num, b_num = self.pgd(images, labels)
+        forward_num += f_num
+        backward_num += b_num
+
+        adv_images, f_num, b_num, potential_idx = self.cr_attack(images, adv_images, labels)
+        forward_num += f_num
+        backward_num += b_num
+
+        for restart_n in range(self.restart - 1):
+            adv_images, f_num, b_num, potential_idx = self.cr_attack(images, adv_images, labels,
+                                                                     restart_idx=potential_idx)
+            forward_num += f_num
+            backward_num += b_num
+
+        delta = torch.clamp(adv_images - images, min=-self.eps, max=self.eps)
+        adv_images = torch.clamp(images + delta, min=0, max=1).detach()
+
+        return adv_images, forward_num, backward_num
+
+    def run_standard_evaluation(self, x_orig, y_orig, bs=100):
+        """
+        Run standard evaluation
+        Args:
+            x_orig: Original images
+            y_orig: Original labels
+            bs: Batch size
+
+        Returns: adversarial images
+        """
+        adv_images = []
+        forward_num, backward_num = 0, 0
+        start_time = time.time()
+        total_success, total_num = 0, 0
+
+        for i in range(0, len(x_orig), bs):
+            x_batch = x_orig[i:i + bs].to(self.device)
+            y_batch = y_orig[i:i + bs].to(self.device)
+
+            adv_batch, f_num, b_num = self.forward(x_batch, y_batch)
+            adv_images.append(adv_batch)
+            forward_num += f_num.sum().item()
+            backward_num += b_num.sum().item()
+            margin_min = self.margin(adv_batch, y_batch)
+            success = (margin_min < 0.0).sum().item()
+            total_success += success
+            total_num += len(x_batch)
+            if self.logger is not None:
+                self.logger.log(
+                    f"Batch {i // bs + 1}/{len(x_orig) // bs}: {success} out of {len(x_batch)} successfully perturbed, Forward: {f_num.sum().item()}, Backward: {b_num.sum().item()}, Total time: {round(time.time() - start_time, 1)} s")
+            print(f"Batch {i // bs + 1}/{len(x_orig) // bs}: {success} out of {len(x_batch)} successfully perturbed, Forward: {f_num.sum().item()}, Backward: {b_num.sum().item()}, Total time: {round(time.time() - start_time, 1)} s")
+
+        if self.logger is not None:
+            self.logger.new_line()
+            self.logger.log(f"Robust accuracy: {round((1 - total_success / total_num) * 100, 2)}%")
+            self.logger.log(f"Total forward: {forward_num}, Total backward: {backward_num}")
+        print()
+        print(f"Robust accuracy: {round((1 - total_success / total_num) * 100, 2)}%")
+        print(f"Total forward: {forward_num}, Total backward: {backward_num}")
+
+        return torch.cat(adv_images)

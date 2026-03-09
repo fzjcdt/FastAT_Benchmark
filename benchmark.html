@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAT Benchmark</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .overview {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 30px 40px;
+        }
+        
+        .overview h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .overview h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+        
+        .overview p {
+            font-size: 1em;
+            margin-bottom: 12px;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .features {
+            padding: 0 40px 30px 40px;
+            background: white;
+        }
+        
+        .features h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 18px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid #667eea;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: #4a5568;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .flowchart-section {
+            padding: 0 40px 30px 40px;
+            background: white;
+        }
+        
+        .flowchart-section h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .flowchart-section h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+        
+        .flowchart-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        
+        .flowchart-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            bottom: 40px;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            opacity: 0.3;
+            transform: translateX(-50%);
+        }
+        
+        .flowchart-box {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            font-weight: 500;
+            color: #333;
+            min-width: 180px;
+            text-align: center;
+            border: 1.5px solid #e0e0e0;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flowchart-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        
+        .flowchart-box.config {
+            background: #e8f0f7;
+            color: #2c5282;
+            border-color: #4a6fa5;
+        }
+        
+        .flowchart-box.method {
+            background: #f5e6f0;
+            color: #6b4c6a;
+            border-color: #8b5a7c;
+        }
+        
+        .flowchart-box.evaluation {
+            background: #fef3e6;
+            color: #9c7a2e;
+            border-color: #c4a35a;
+        }
+        
+        .flowchart-box.training {
+            background: #e8f5e8;
+            color: #3d6b3d;
+            border-color: #6b8e6b;
+        }
+        
+        .flowchart-box.results {
+            background: #e6f5f5;
+            color: #2e7a7a;
+            border-color: #5a9ea8;
+        }
+        
+        .flowchart-arrow {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: bold;
+            opacity: 0.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flowchart-branch {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flowchart-branch .flowchart-box {
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .flowchart-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flowchart-row .flowchart-box {
+            flex: 1;
+            min-width: 160px;
+            max-width: 220px;
+        }
+        
+        .flowchart-label {
+            font-size: 0.75em;
+            color: #666;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+        
+        .flowchart-phase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 10px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 8px;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flowchart-phase-title {
+            font-size: 0.75em;
+            color: #667eea;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .controls {
+            padding: 0 40px 25px 40px;
+            background: white;
+        }
+        
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9em;
+        }
+        
+        select, input[type="checkbox"] {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+        
+        select {
+            min-width: 140px;
+        }
+        
+        input[type="file"] {
+            display: none;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 12px;
+            background: white;
+        }
+        
+        input[type="file"].visible {
+            display: inline-block;
+        }
+        
+        .method-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .method-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .method-checkbox:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        
+        .method-checkbox input {
+            cursor: pointer;
+        }
+        
+        .content {
+            padding: 0 40px 30px 40px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+        }
+        
+        th:hover {
+            background: linear-gradient(135deg, #5a6fd6 0%, #6a4190 100%);
+        }
+        
+        th .sort-icon {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+        
+        tr:nth-child(even):hover {
+            background: #f5f5f5;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .tab:hover {
+            background: #bdbdbd;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .color-picker {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+        }
+        
+        input[type="color"] {
+            width: 40px;
+            height: 30px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 FastAT Benchmark</h1>
+            <p>A Comprehensive Framework for Fair Evaluation of Fast Adversarial Training Methods</p>
+        </div>
+        
+        <div class="overview">
+            <h2>📋 Overview</h2>
+            <p>
+                The FastAT Benchmark provides a rigorous and fair evaluation framework for fast adversarial training methods. Unlike public leaderboards that allow diverse combinations of model architectures, data sources, and computational budgets, our benchmark establishes conditions where all methods compete on equal footing.
+            </p>
+            <p>
+                This platform implements over a dozen representative FastAT methods with a unified codebase, ensuring fair and reproducible comparison across different algorithmic innovations. The benchmark systematically removes advantages from massive computational resources and unlimited external data, providing the research community with a transparent baseline for evaluating fast adversarial training techniques.
+            </p>
+        </div>
+        
+        <div class="features">
+            <h2>✨ Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🎯 Unified Architecture</h3>
+                    <p>All methods are evaluated on identical network structures, eliminating performance differences arising from architectural advantages rather than training procedures.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚙️ Standardized Settings</h3>
+                    <p>Consistent training schedules, optimizers, learning rate policies, and data augmentation strategies prevent the experimental setup from favoring any particular method.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚫 No External Data</h3>
+                    <p>Strict prohibition of using additional or synthetic data beyond the original benchmark training set ensures observed gains stem solely from the learning algorithm.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Dual-Metric Framework</h3>
+                    <p>Evaluates both robustness performance (accuracy against strong attacks) and computational cost (GPU hours and memory footprint).</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔬 Comprehensive Evaluation</h3>
+                    <p>Includes diverse attack methods: PGD with varying iterations, AutoAttack, and CR Attack for thorough robustness assessment.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔄 Unified Implementation</h3>
+                    <p>Re-implemented over a dozen FastAT methods with a common interface for data loading, model initialization, training loops, and evaluation protocols.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>📚 Supported Methods</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/2001.03994" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-RS</a></h3>
+                    <p>ICLR 2020</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/b8ce47761ed7b3b6f48b583350b7f9e4-Paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 GRAD-ALIGN</a></h3>
+                    <p>NeurIPS 2020</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/7503cfacd12053d309b6bed5c89de212-Paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 FREE-AT</a></h3>
+                    <p>NeurIPS 2019</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/2207.08859" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-PGI</a></h3>
+                    <p>ECCV 2022</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Zhao_Fast_Adversarial_Training_with_Smooth_Convergence_ICCV_2023_paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-MEP-CS</a></h3>
+                    <p>ICCV 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Zhao_Fast_Adversarial_Training_with_Smooth_Convergence_ICCV_2023_paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-RS-CS</a></h3>
+                    <p>ICCV 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/2407.12443" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-PCO</a></h3>
+                    <p>ECCV 2024</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://ojs.aaai.org/index.php/AAAI/article/download/16989/16796" target="_blank" style="color: #667eea; text-decoration: none;">📄 SSAT</a></h3>
+                    <p>AAAI 2021</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2021/file/62889e73828c756c961c5a6d6c01a463-Paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 NU-AT</a></h3>
+                    <p>NeurIPS 2021</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/5434a6b40f8f65488e722bc33d796c8b-Paper-Conference.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 N-FGSM</a></h3>
+                    <p>NeurIPS 2022</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/2103.15476" target="_blank" style="color: #667eea; text-decoration: none;">📄 ZERO-GRAD</a></h3>
+                    <p>ISWA 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/ea3ed20b6b101a09085ef09c97da1597-Paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 GAT</a></h3>
+                    <p>NeurIPS 2020</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/d65befe6b80ecf7f180b4def503d7776-Paper-Conference.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 AAER</a></h3>
+                    <p>NeurIPS 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/2401.11618" target="_blank" style="color: #667eea; text-decoration: none;">📄 ELLE</a></h3>
+                    <p>ICLR 2024</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/1412.6572" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-AT</a></h3>
+                    <p>ICLR 2015</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/1706.06083" target="_blank" style="color: #667eea; text-decoration: none;">📄 PGD-AT</a></h3>
+                    <p>ICLR 2018</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://arxiv.org/pdf/1803.05407" target="_blank" style="color: #667eea; text-decoration: none;">📄 PGD-AT-WA</a></h3>
+                    <p>UAI 2018</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://ojs.aaai.org/index.php/AAAI/article/view/30147/32032" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-UAP</a></h3>
+                    <p>AAAI 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://ojs.aaai.org/index.php/AAAI/article/view/30147/32032" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-CUAP</a></h3>
+                    <p>AAAI 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://ojs.aaai.org/index.php/AAAI/article/view/30147/32032" target="_blank" style="color: #667eea; text-decoration: none;">📄 FGSM-FUAP</a></h3>
+                    <p>AAAI 2023</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Pan_Mitigating_Catastrophic_Overfitting_in_Fast_Adversarial_Training_via_Label_Information_ICCV_2025_paper.pdf" target="_blank" style="color: #667eea; text-decoration: none;">📄 LIET</a></h3>
+                    <p>ICCV 2025</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flowchart-section">
+            <h2>🔄 Benchmark Training Flow</h2>
+            <div class="flowchart-container">
+                <div class="flowchart-box config">📁 Load Configuration</div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-branch">
+                    <div class="flowchart-box config">common.yaml</div>
+                    <div class="flowchart-box config">method.yaml</div>
+                </div>
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-phase">
+                    <div class="flowchart-phase-title">Initialization Phase</div>
+                    <div class="flowchart-row">
+                        <div class="flowchart-box training">📊 Data Loaders</div>
+                        <div class="flowchart-box training">🧠 Model Init</div>
+                        <div class="flowchart-box training">⚡ Optimizer</div>
+                    </div>
+                </div>
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-box method">🎯 Select FastAT Method</div>
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-phase">
+                    <div class="flowchart-phase-title">Training Phase</div>
+                    <div class="flowchart-row">
+                        <div class="flowchart-box training">🔄 Training Loop</div>
+                        <div class="flowchart-box training">✓ Validation</div>
+                    </div>
+                </div>
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-phase">
+                    <div class="flowchart-phase-title">Evaluation Phase</div>
+                    <div class="flowchart-box evaluation">🧪 Final Evaluation</div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-branch">
+                        <div class="flowchart-box evaluation">PGD Attack</div>
+                        <div class="flowchart-box evaluation">AutoAttack</div>
+                        <div class="flowchart-box evaluation">CR Attack</div>
+                    </div>
+                </div>
+                <div class="flowchart-arrow">↓</div>
+                
+                <div class="flowchart-box results">📈 Log Results & Metrics</div>
+            </div>
+        </div>
+
+        <div class="section" style="padding: 0 40px 0 40px;">
+            <h2>📊 Method Comparison</h2>
+        </div>
+
+        <div class="controls">
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="dataset-select">Dataset:</label>
+                    <select id="dataset-select">
+                        <option value="cifar10">CIFAR-10</option>
+                        <option value="cifar100">CIFAR-100</option>
+                        <option value="tiny_imagenet">Tiny ImageNet</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="clean_acc">Clean Accuracy</option>
+                        <option value="pgd_10_acc">PGD-10 Accuracy</option>
+                        <option value="pgd_20_acc">PGD-20 Accuracy</option>
+                        <option value="pgd_50_acc">PGD-50 Accuracy</option>
+                        <option value="autoattack_acc">AutoAttack Accuracy</option>
+                        <option value="cr_attack_acc">CR Attack Accuracy</option>
+                        <option value="total_training_time">Training Time</option>
+                        <option value="max_gpu_memory">GPU Memory</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="sort-order">Order:</label>
+                    <select id="sort-order">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="file-input" id="file-input-label" style="color: #667eea; display: none;">📁 Load Data:</label>
+                    <input type="file" id="file-input" accept=".json" style="padding: 4px;">
+                    <span id="file-hint" style="font-size: 11px; color: #666; margin-left: 8px; display: none;">Select benchmark_data.json</span>
+                </div>
+                <button class="btn" id="select-all">Select All</button>
+                <button class="btn" id="deselect-all">Deselect All</button>
+            </div>
+            
+            <div>
+                <label style="font-weight: 600; color: #333; display: block; margin-bottom: 8px;">Select Methods:</label>
+                <div class="method-selector" id="method-selector"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="tabs">
+                <button class="tab active" data-tab="table">📊 Results Table</button>
+                <button class="tab" data-tab="charts">📈 Training Progress</button>
+            </div>
+            
+            <div id="table-tab" class="tab-content active">
+                <div class="section">
+                    <div class="table-container">
+                        <table id="results-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="method">Method <span class="sort-icon">↕</span></th>
+                                    <th data-sort="clean_acc">Clean Acc (%) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="pgd_10_acc">PGD-10 Acc (%) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="pgd_20_acc">PGD-20 Acc (%) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="pgd_50_acc">PGD-50 Acc (%) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="autoattack_acc">AA Acc (%) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="cr_attack_acc">CR Acc (%) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="total_training_time">Training Time (s) <span class="sort-icon">↕</span></th>
+                                    <th data-sort="max_gpu_memory">Memory (GB) <span class="sort-icon">↕</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="charts-tab" class="tab-content">
+                <div class="section">
+                    <h2>📈 Training Progress Comparison</h2>
+                    <div class="control-row" style="margin-top: 15px;">
+                        <div class="control-group">
+                            <label>Select Metric:</label>
+                            <select id="chart-metric">
+                                <option value="train_acc_list">Train Accuracy</option>
+                                <option value="model_val_acc_list">Validation Accuracy</option>
+                                <option value="model_pgd_acc_list">Validation PGD Accuracy</option>
+                                <option value="model_fgsm_acc_list">Validation FGSM Accuracy</option>
+                                <option value="wa_val_acc_list">WA Validation Accuracy</option>
+                                <option value="wa_pgd_acc_list">WA Validation PGD Accuracy</option>
+                                <option value="wa_fgsm_acc_list">WA Validation FGSM Accuracy</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Select Seed:</label>
+                            <select id="chart-seed">
+                                <option value="0">Seed 0</option>
+                                <option value="1">Seed 1</option>
+                                <option value="2">Seed 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="color-picker" id="color-picker"></div>
+                    <div class="chart-container" style="margin-top: 20px;">
+                        <canvas id="training-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let allData = {};
+        let selectedMethods = [];
+        let currentDataset = 'cifar10';
+        let sortBy = 'clean_acc';
+        let sortOrder = 'desc';
+        let charts = {};
+        let methodColors = {};
+        
+        const defaultColors = [
+            '#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231',
+            '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe',
+            '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000',
+            '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080',
+            '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7',
+            '#dfe6e9', '#fd79a8', '#a29bfe', '#6c5ce7', '#00b894',
+            '#e17055', '#fdcb6e', '#74b9ff', '#55efc4', '#81ecec',
+            '#fab1a0', '#ff7675', '#fd79a8', '#a29bfe', '#6c5ce7',
+            '#00cec9', '#0984e3', '#6c5ce7', '#fdcb6e', '#e17055',
+            '#d63031', '#00b894', '#00cec9', '#0984e3', '#6c5ce7'
+        ];
+        
+        function formatMethodName(method) {
+            return method
+                .split('_')
+                .map(word => word.toUpperCase())
+                .join('-');
+        }
+        
+        async function loadData() {
+            setupEventListeners();
+            
+            try {
+                const response = await fetch('benchmark_data.json');
+                allData = await response.json();
+                initializeApp();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                showFileInputPrompt();
+            }
+        }
+        
+        function showFileInputPrompt() {
+            const fileInput = document.getElementById('file-input');
+            const fileHint = document.getElementById('file-hint');
+            const fileInputLabel = document.getElementById('file-input-label');
+            fileInput.classList.add('visible');
+            fileInput.style.borderColor = '#667eea';
+            fileInput.style.boxShadow = '0 0 5px rgba(102, 126, 234, 0.5)';
+            fileHint.style.display = 'inline';
+            fileInputLabel.style.display = 'inline';
+        }
+        
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            console.log('File selected:', file);
+            
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    console.log('File loaded, parsing JSON...');
+                    try {
+                        allData = JSON.parse(e.target.result);
+                        console.log('JSON parsed successfully:', allData);
+                        
+                        if (Object.keys(allData).length === 0) {
+                            alert('The JSON file appears to be empty. Please check the file.');
+                            return;
+                        }
+                        
+                        initializeApp();
+                        alert('Data loaded successfully!');
+                    } catch (error) {
+                        console.error('Error parsing JSON:', error);
+                        alert('Error parsing JSON file: ' + error.message + '\nPlease ensure it is a valid JSON file.');
+                    }
+                };
+                
+                reader.onerror = function(error) {
+                    console.error('Error reading file:', error);
+                    alert('Error reading file. Please try again.');
+                };
+                
+                reader.readAsText(file);
+            } else {
+                console.log('No file selected');
+            }
+        }
+        
+        function initializeApp() {
+            const methods = Object.keys(allData[currentDataset] || {});
+            methods.forEach((method, idx) => {
+                methodColors[method] = defaultColors[idx % defaultColors.length];
+            });
+            
+            updateMethodSelector();
+            selectedMethods = [...methods];
+            updateTable();
+            updateColorPicker();
+            updateChart();
+        }
+        
+        function updateMethodSelector() {
+            const selector = document.getElementById('method-selector');
+            const methods = Object.keys(allData[currentDataset] || {});
+            
+            selector.innerHTML = methods.map(method => `
+                <label class="method-checkbox">
+                    <input type="checkbox" value="${method}" ${selectedMethods.includes(method) ? 'checked' : ''}>
+                    ${formatMethodName(method)}
+                </label>
+            `).join('');
+        }
+        
+        function updateTable() {
+            const tbody = document.getElementById('table-body');
+            const methods = selectedMethods.map(m => allData[currentDataset][m]).filter(Boolean);
+            
+            methods.sort((a, b) => {
+                const valA = a[sortBy]?.mean || 0;
+                const valB = b[sortBy]?.mean || 0;
+                return sortOrder === 'desc' ? valB - valA : valA - valB;
+            });
+
+            tbody.innerHTML = methods.map(row => `
+                <tr>
+                    <td><strong>${formatMethodName(row.method)}</strong></td>
+                    <td>${row.clean_acc?.mean != null ? row.clean_acc.mean.toFixed(2) + ' ± ' + row.clean_acc.std.toFixed(2) : '-'}</td>
+                    <td>${row.pgd_10_acc?.mean != null ? row.pgd_10_acc.mean.toFixed(2) + ' ± ' + row.pgd_10_acc.std.toFixed(2) : '-'}</td>
+                    <td>${row.pgd_20_acc?.mean != null ? row.pgd_20_acc.mean.toFixed(2) + ' ± ' + row.pgd_20_acc.std.toFixed(2) : '-'}</td>
+                    <td>${row.pgd_50_acc?.mean != null ? row.pgd_50_acc.mean.toFixed(2) + ' ± ' + row.pgd_50_acc.std.toFixed(2) : '-'}</td>
+                    <td>${row.autoattack_acc?.mean != null ? row.autoattack_acc.mean.toFixed(2) + ' ± ' + row.autoattack_acc.std.toFixed(2) : '-'}</td>
+                    <td>${row.cr_attack_acc?.mean != null ? row.cr_attack_acc.mean.toFixed(2) + ' ± ' + row.cr_attack_acc.std.toFixed(2) : '-'}</td>
+                    <td>${row.total_training_time?.mean != null ? row.total_training_time.mean.toFixed(1) + ' ± ' + row.total_training_time.std.toFixed(1) : '-'}</td>
+                    <td>${row.max_gpu_memory?.mean != null ? row.max_gpu_memory.mean.toFixed(2) + ' ± ' + row.max_gpu_memory.std.toFixed(2) : '-'}</td>
+                </tr>
+            `).join('');
+        }
+        
+        function updateColorPicker() {
+            const picker = document.getElementById('color-picker');
+            picker.innerHTML = selectedMethods.map(method => `
+                <div class="color-item">
+                    <input type="color" value="${methodColors[method]}" data-method="${method}">
+                    <span>${formatMethodName(method)}</span>
+                </div>
+            `).join('');
+        }
+        
+        function updateChart() {
+            const metric = document.getElementById('chart-metric').value;
+            const seed = document.getElementById('chart-seed').value;
+            const ctx = document.getElementById('training-chart').getContext('2d');
+            
+            if (charts.training) {
+                charts.training.destroy();
+            }
+            
+            const datasets = selectedMethods.map(method => {
+                const data = allData[currentDataset][method];
+                if (!data || !data.seeds || !data.seeds[seed] || !data.seeds[seed][metric]) return null;
+                
+                return {
+                    label: formatMethodName(method),
+                    data: data.seeds[seed][metric].map(v => v * 100),
+                    borderColor: methodColors[method],
+                    backgroundColor: methodColors[method] + '20',
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 2
+                };
+            }).filter(Boolean);
+            
+            const allValues = datasets.flatMap(ds => ds.data);
+            const maxValue = Math.max(...allValues);
+            const yAxisMax = maxValue < 100 ? Math.ceil(maxValue / 10) * 10 : 100;
+            
+            charts.training = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: datasets[0]?.data?.length || 100}, (_, i) => i + 1),
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: metric.replace('_list', '').replace(/_/g, ' ').toUpperCase() + ' vs Epoch (Seed ' + seed + ')',
+                            font: { size: 18 }
+                        },
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(context) {
+                                    return 'Epoch ' + context[0].label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Epoch'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Accuracy (%)'
+                            },
+                            min: 0,
+                            max: yAxisMax
+                        }
+                    }
+                }
+            });
+        }
+        
+        function setupEventListeners() {
+            document.getElementById('dataset-select').addEventListener('change', (e) => {
+                currentDataset = e.target.value;
+                const methods = Object.keys(allData[currentDataset] || {});
+                selectedMethods = [...methods];
+                updateMethodSelector();
+                updateTable();
+                updateColorPicker();
+                updateChart();
+            });
+            
+            document.getElementById('sort-by').addEventListener('change', (e) => {
+                sortBy = e.target.value;
+                updateTable();
+            });
+            
+            document.getElementById('sort-order').addEventListener('change', (e) => {
+                sortOrder = e.target.value;
+                updateTable();
+            });
+            
+            document.getElementById('file-input').addEventListener('change', handleFileUpload);
+            
+            document.getElementById('select-all').addEventListener('click', () => {
+                const methods = Object.keys(allData[currentDataset] || {});
+                selectedMethods = [...methods];
+                updateMethodSelector();
+                updateTable();
+                updateColorPicker();
+                updateChart();
+            });
+            
+            document.getElementById('deselect-all').addEventListener('click', () => {
+                selectedMethods = [];
+                updateMethodSelector();
+                updateTable();
+                updateColorPicker();
+                updateChart();
+            });
+            
+            document.getElementById('method-selector').addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox') {
+                    const method = e.target.value;
+                    if (e.target.checked) {
+                        if (!selectedMethods.includes(method)) {
+                            selectedMethods.push(method);
+                        }
+                    } else {
+                        selectedMethods = selectedMethods.filter(m => m !== method);
+                    }
+                    updateTable();
+                    updateColorPicker();
+                    updateChart();
+                }
+            });
+            
+            document.getElementById('color-picker').addEventListener('change', (e) => {
+                if (e.target.type === 'color') {
+                    const method = e.target.dataset.method;
+                    methodColors[method] = e.target.value;
+                    updateChart();
+                }
+            });
+            
+            document.getElementById('chart-metric').addEventListener('change', updateChart);
+            
+            document.getElementById('chart-seed').addEventListener('change', updateChart);
+            
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab + '-tab').classList.add('active');
+                    if (tab.dataset.tab === 'charts') {
+                        updateColorPicker();
+                        updateChart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('th[data-sort]').forEach(th => {
+                th.addEventListener('click', () => {
+                    const sortField = th.dataset.sort;
+                    if (sortBy === sortField) {
+                        sortOrder = sortOrder === 'desc' ? 'asc' : 'desc';
+                    } else {
+                        sortBy = sortField;
+                        sortOrder = 'desc';
+                    }
+                    updateTable();
+                });
+            });
+        }
+        
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# ELLE configuration for CIFAR-10
+name: elle
+total_epoch: 100
+scheduler: one_cycle
+lr: 0.1
+momentum: 0.9
+weight_decay: 5e-4
+label_smoothing: 0.4
+weight_average: true
+tau: 0.9995
+scheduler_milestones: [90, 95]
+scheduler_gamma: 0.1
+lin_reg: 1.0
+n_triplets: 1
+lambda_schedule: constant
+decay_rate: 0.99
+sensitivity: 2.0
+lambda_aux: 10.0
+fgsm_init: random
+fgsm_alpha: 1.25
+attack_iter: 1
+clamp: false
+input_noise_rate: 0

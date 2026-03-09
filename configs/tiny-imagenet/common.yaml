@@ -1,0 +1,9 @@
+dataset: tiny-imagenet
+data_dir: ./data/tiny-imagenet
+model: PreActResNet18
+batch_size: 128
+num_workers: 4
+train_size: 98000
+val_size: 2000
+eps: 8.0/255
+log_dir: ./log/tiny-imagenet

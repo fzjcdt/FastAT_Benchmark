@@ -1,0 +1,12 @@
+name: free_at
+total_epoch: 200
+scheduler: one_cycle
+lr: 0.1
+momentum: 0.9
+weight_decay: 5e-4
+label_smoothing: 0.4
+weight_average: true
+tau: 0.9995
+scheduler_milestones: [45, 47]
+scheduler_gamma: 0.1
+m: 4
