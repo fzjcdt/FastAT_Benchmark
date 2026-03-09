@@ -21,10 +21,6 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Logs
-log/
-*.log
-
 # Data
 *.h5
 *.pt
