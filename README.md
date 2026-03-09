@@ -1,5 +1,9 @@
 # FastAT Benchmark
 
+## 🌐 Benchmark Webpage
+
+The benchmark results can be viewed at: [https://fzjcdt.github.io/FastAT_Banchmark/benchmark.html](https://fzjcdt.github.io/FastAT_Banchmark/benchmark.html)
+
 ## 🚀 Overview
 
 The FastAT Benchmark provides a rigorous and fair evaluation framework for fast adversarial training methods. Unlike public leaderboards that allow diverse combinations of model architectures, data sources, and computational budgets, our benchmark establishes conditions where all methods compete on equal footing.
@@ -82,23 +86,14 @@ Each experiment runs three times with different random seeds, and the mean of th
 - [FGSM-FUAP](https://ojs.aaai.org/index.php/AAAI/article/view/30147/32032)
 - [LIET](https://openaccess.thecvf.com/content/ICCV2025/papers/Pan_Mitigating_Catastrophic_Overfitting_in_Fast_Adversarial_Training_via_Label_Information_ICCV_2025_paper.pdf)
 
-## 📊 Results
-
-The benchmark reveals substantial performance variations among FastAT methods when evaluated under strictly controlled conditions. The results simultaneously capture robustness under multiple attack strengths and computational costs, enabling researchers to identify methods that achieve favorable trade-offs between defensive capability and training efficiency.
-
-## 📈 Training Dynamics
-
-Monitoring training dynamics provides crucial insights into method stability. Training progress curves track training accuracy alongside PGD-10 and FGSM robustness on the validation set throughout training. These curves serve a diagnostic purpose: methods experiencing catastrophic overfitting exhibit a characteristic pattern where training accuracy remains high while robust accuracy suddenly collapses.
 
 ## 🚀 Getting Started
 
-To use the FastAT Benchmark, follow these steps:
+If you want to reproduce these FastAT methods, you can use commands similar to the following:
 
-1. Clone the repository
-2. Install the required dependencies
-3. Configure the benchmark settings in `common.yaml` and method-specific settings in `method.yaml`
-4. Run the benchmark using the provided scripts
-5. Analyze the results using the visualization tools
+```
+python main.py --dataset cifar10 --seeds 0 1 2 --methods fgsm_rs
+```
 
 ## 🤝 Contributing
 
