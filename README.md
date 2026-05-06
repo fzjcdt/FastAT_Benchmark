@@ -102,5 +102,12 @@ Contributions to the FastAT Benchmark are welcome! Please feel free to submit pu
 ## 📚 References
 
 For more details, please refer to the paper:
-TODO
+```
+@article{pan2026fastat,
+  title={FastAT Benchmark: A Comprehensive Framework for Fair Evaluation of Fast Adversarial Training Methods},
+  author={Pan, Chao and Yao, Xin},
+  journal={arXiv preprint arXiv:2604.22853},
+  year={2026}
+}
+```
 
